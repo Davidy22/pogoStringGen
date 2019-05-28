@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>	
+		<link rel="stylesheet" type="text/css" href="static/css/style.css" />
+		<script type=text/javascript src="{{url_for('static', filename='js/jquery-3.4.1.js') }}"></script>
+		<script type=text/javascript>
+			$SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+		</script>
+	</head>
+	<body>
+		<script type=text/javascript>
+			  $(function() {
+				$('a#calculate').bind('click', function() {
+				  $.getJSON($SCRIPT_ROOT + '/_add_numbers', {
+					a: "1",
+					b: 3
+				  }, function(data) {
+					$("#result").text(data.result);
+				  });
+				  return false;
+				});
+			  });
+		</script>
+		<input type=text size=5 name=a> +
+   <input type=text size=5 name=b> =
+		<span id=result>?</span>
+		<a href=# id=calculate>calculate server side</a>
+		<div id="pokemon-list">
+			<div class="pokemon">
+				<img src="static/images/1.png">
+			</div>
+			<div class="pokemon">
+				<img src="static/images/1.png">
+			</div>
+			<div class="pokemon">
+				<img src="static/images/1.png">
+			</div>
+	
+	</div>
+	</body>
+</html>

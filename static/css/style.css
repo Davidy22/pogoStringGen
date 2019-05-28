@@ -1,0 +1,17 @@
+#pokemon-list {
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+}
+
+.pokemon {
+	border: 1px solid #000;
+}
+
+@media only screen and (max-width: 1024px) {
+    div.p-flex { width: 33%; }
+}
+
+@media only screen and (max-width: 600px) {
+	div.p-flex { width: 50%; }
+}
