@@ -12,8 +12,7 @@
 			  $(function() {
 				$('a#calculate').bind('click', function() {
 				  $.getJSON($SCRIPT_ROOT + '/_add_numbers', {
-					a: "1",
-					b: 3
+					pok: [2, 2, 123]
 				  }, function(data) {
 					$("#result").text(data.result);
 				  });
@@ -25,9 +24,13 @@
    <input type=text size=5 name=b> =
 		<span id=result>?</span>
 		<a href=# id=calculate>calculate server side</a>
+		
+		
 		<div id="pokemon-list">
-			<div class="pokemon">
+			{% for poke in pokemon %}
+			<div class="pokemon {poke">
 				<img src="static/images/1.png">
+				
 			</div>
 			<div class="pokemon">
 				<img src="static/images/1.png">
