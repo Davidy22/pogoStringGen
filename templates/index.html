@@ -28,16 +28,12 @@
 		
 		<div id="pokemon-list">
 			{% for poke in pokemon %}
-			<div class="pokemon {poke">
-				<img src="static/images/1.png">
-				
+			<div class="pokemon {{ poke['no'] }}">
+				<img src="static/images/{{ poke['no'] }}.png">
+				{{ poke['name'] }}
 			</div>
-			<div class="pokemon">
-				<img src="static/images/1.png">
-			</div>
-			<div class="pokemon">
-				<img src="static/images/1.png">
-			</div>
+			{% endfor %}
+
 	
 	</div>
 	</body>
