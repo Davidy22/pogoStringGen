@@ -19,6 +19,11 @@
 				  return false;
 				});
 			  });
+			  
+			
+			function select(elem) {
+				elem.classlist.add("penis");
+			};
 		</script>
 		<input type=text size=5 name=a> +
    <input type=text size=5 name=b> =
@@ -28,7 +33,7 @@
 		
 		<div id="pokemon-list">
 			{% for poke in pokemon %}
-			<div class="pokemon {{ poke['no'] }}">
+			<div class="pokemon {{ poke['no'] }}" onclick=select(this)>
 				<img src="static/images/{{ poke['no'] }}.png">
 				{{ poke['name'] }}
 			</div>
