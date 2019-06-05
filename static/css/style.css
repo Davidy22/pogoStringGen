@@ -2,10 +2,28 @@
 	display: flex;
 	flex-wrap: wrap;
 	flex-direction: row;
+	margin: 20px
 }
 
 .pokemon {
 	border: 1px solid #000;
+	background-color:#E9FAF9;
+	padding:5px;
+	border-spacing: 10px 10px;
+	border-radius:5px;
+    width:5em;
+}
+
+.select {
+	background-color:#A9CAC9;
+}
+
+.pokemon-label {
+    text-align: center;
+}
+
+.not-in-go {
+    visibility: hidden;
 }
 
 @media only screen and (max-width: 1024px) {
@@ -14,4 +32,8 @@
 
 @media only screen and (max-width: 600px) {
 	div.p-flex { width: 50%; }
+}
+
+body {
+    background-color:#D9EAE9;
 }

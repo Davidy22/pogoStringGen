@@ -1,11 +1,11 @@
-from recursiveDescent import Parser, a, maybe, someof, skip, anyof, parser
+from src.recursiveDescent import Parser, a, maybe, someof, skip, anyof, parser
 from itertools import groupby, count
 import re
 
 def natural_sort(l): 
-    convert = lambda text: int(text) if text.isdigit() else text.lower() 
-    alphanum_key = lambda key: [ convert(c) for c in re.split('([0-9]+)', str(key)) ] 
-    return sorted(l, key = alphanum_key)
+	convert = lambda text: int(text) if text.isdigit() else text.lower()
+	alphanum_key = lambda key: [ convert(c) for c in re.split('([0-9]+)', str(key)) ]
+	return sorted(l, key = alphanum_key)
 
 def to_list(parse_tree):
 	vals = []
@@ -43,6 +43,7 @@ def parse(string):
 	
 
 def condense(vals):
+	vals = [int(val) for val in vals]
 	vals = natural_sort(list(set(vals)))
 	groups = groupby(vals, key=lambda item, c=count():item-next(c))
 	tmp = [list(g) for k, g in groups]

@@ -1,5 +1,6 @@
 from flask import Flask, jsonify, render_template, request
 import json
+from src.parse import *
 app = Flask(__name__)
 
 file = open("data/dump.json")
@@ -9,13 +10,20 @@ for key in pokemon:
 	pokemonList.append(pokemon[key])
 
 
-@app.route('/_add_numbers')
-def add_numbers():
+@app.route('/_generate_string')
+def generate_string():
 	pok = request.args.getlist('pok[]')
-	total = 0
-	for i in pok:
-		total += i
-	return jsonify(result=total)
+
+	result = condense(pok)
+	return jsonify(result=result)
+
+@app.route('/_import_string')
+def import_string():
+	pok = request.args.getlist('pok', type=str)
+
+	result = parse(pok[0])
+	return jsonify(result=result)
+
 
 @app.route('/')
 def index():
