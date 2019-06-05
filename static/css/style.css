@@ -6,12 +6,29 @@
 }
 
 .pokemon {
+    position: relative;
 	border: 1px solid #000;
 	background-color:#E9FAF9;
 	padding:5px;
 	border-spacing: 10px 10px;
 	border-radius:5px;
     width:5em;
+}
+
+.pokemon-image {
+    z-index: 2;
+    position: relative;
+}
+
+.pokemon-no {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 53px;
+    font-weight: bolder;
+    opacity: 0.6;
+    z-index: 2;
 }
 
 .select {

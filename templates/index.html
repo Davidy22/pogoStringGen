@@ -10,21 +10,6 @@
 	<body>
 		<script type=text/javascript>
 			  $(function() {
-				$('a#generate').bind('click', function() {
-					var arrayOfIds = $.map($(".select"), function(n, i){
-					  return n.id;
-					});
-				  $.getJSON($SCRIPT_ROOT + '/_generate_string', {
-					pok: arrayOfIds
-				  }, function(data) {
-					$("#result").text(data.result);
-				  });
-				  return false;
-				});
-			  });
-		</script>
-		<script type=text/javascript>
-			  $(function() {
 				$('a#import').bind('click', function() {
 				  $.getJSON($SCRIPT_ROOT + '/_import_string', {
 					pok: $("#importBox").val()
@@ -46,20 +31,28 @@
 		<script type=text/javascript>
 			function select(elem) {
 				$(elem).toggleClass("select")
+				var arrayOfIds = $.map($(".select"), function(n, i){
+					  return n.id;
+					});
+				  $.getJSON($SCRIPT_ROOT + '/_generate_string', {
+					pok: arrayOfIds
+				  }, function(data) {
+					$("#result").text(data.result);
+				  });
 			};
 		</script>
 		<input type=text size=20 id=importBox>
 		<a href=# id=import>Import string</a>
 		<br />
-		<span id=result>?</span>
+		<span id=result word-wrap="break-word">?</span>
 
-		<a href=# id=generate>Generate string</a>
 		
 		
 		<div id="pokemon-list">
 			{% for poke in pokemon %}
 			<div id="{{ poke['no'] }}" class="pokemon" onclick=select(this)>
-				<img src="static/images/{{ poke['no'] }}.png">
+				<div class="pokemon-no">{{ poke['no'] }}</div>
+				<img class="pokemon-image" src="static/images/{{ poke['no'] }}.png">
 				<div class="pokemon-label">{{ poke['name'] }}</div>
 
 			</div>
