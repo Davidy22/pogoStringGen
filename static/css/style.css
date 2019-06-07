@@ -1,3 +1,7 @@
+#result {
+	word-wrap: break-word;
+}
+
 #pokemon-list {
 	display: flex;
 	flex-wrap: wrap;
