@@ -52,6 +52,13 @@
 
 				});
 			  });
+			  
+			  
+			function copy () {
+				var copyText = document.getElementById("result");
+				copyText.select();
+				document.execCommand("Copy");
+			}
 		</script>
 		<script type=text/javascript>
 			function select(elem) {
@@ -62,7 +69,7 @@
 				  $.getJSON($SCRIPT_ROOT + '/_generate_string', {
 					pok: arrayOfIds
 				  }, function(data) {
-					$("#result").text(data.result);
+					$("#result").val(data.result);
 				  });
 			};
 		</script>
@@ -71,7 +78,8 @@
 		<a href=# id=add>Add string</a>
 		<a href=# id=invert>Invert string</a>
 		<br />
-		<span id=result>?</span>
+		<input type="text" value="" id="result" readonly>
+		<button type="button" onclick="copy()">Copy string</button>
 
 		
 		
