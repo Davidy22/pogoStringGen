@@ -15,7 +15,6 @@
 					pok: $("#importBox").val()
 				  }, function(data) {
 					  var toSelect = data.result;
-					  console.log(toSelect)
 					  $(".pokemon").removeClass("select")
 
 
@@ -24,6 +23,32 @@
 					  }
 					  return false;
 				  });
+
+				});
+			  });
+			  
+			  
+			  $(function() {
+				$('a#add').bind('click', function() {
+				  $.getJSON($SCRIPT_ROOT + '/_import_string', {
+					pok: $("#importBox").val()
+				  }, function(data) {
+					  var toSelect = data.result;
+
+					  for (i=0; i < toSelect.length; i++) {
+						$( "#" + toSelect[i] ).addClass("select")
+					  }
+					  return false;
+				  });
+
+				});
+			  });
+			  
+			  
+			  $(function() {
+				$('a#invert').bind('click', function() {
+					$(".pokemon").toggleClass("select")
+				  
 
 				});
 			  });
@@ -43,8 +68,10 @@
 		</script>
 		<input type=text size=20 id=importBox>
 		<a href=# id=import>Import string</a>
+		<a href=# id=add>Add string</a>
+		<a href=# id=invert>Invert string</a>
 		<br />
-		<span id=result word-wrap="break-word">?</span>
+		<span id=result>?</span>
 
 		
 		
