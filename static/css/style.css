@@ -18,7 +18,7 @@
     border-spacing: 10px 10px;
     border-radius: 5px;
     width: 6.6em;
-    height: 8.7em;
+    height: 8em;
 }
 
 .pokemon-image {
@@ -46,6 +46,9 @@
 
 .pokemon-label {
     text-align: center;
+    position: relative;
+	bottom: 10px;
+	font-size: 14px;
 }
 
 .not-in-go {
