@@ -10,18 +10,16 @@ for key in pokemon:
 	pokemonList.append(pokemon[key])
 
 
-@app.route('/_generate_string')
+@app.route('/_generate_string', methods = ["POST"])
 def generate_string():
-	pok = request.args.getlist('pok[]')
-
+	pok = request.form.getlist("pok[]")
 	result = condense(pok)
 	return jsonify(result=result)
 
-@app.route('/_import_string')
+@app.route('/_import_string', methods = ["POST"])
 def import_string():
-	pok = request.args.getlist('pok', type=str)
-
-	result = parse(pok[0])
+	pok = request.form["pok"]
+	result = parse(pok)
 	return jsonify(result=result)
 
 

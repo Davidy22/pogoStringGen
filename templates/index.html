@@ -6,12 +6,22 @@
 		<script type=text/javascript>
 			$SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
 		</script>
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-49267605-2"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+
+			gtag('config', 'UA-49267605-2');
+		</script>
+
 	</head>
 	<body>
 		<script type=text/javascript>
 			  $(function() {
 				$('a#import').bind('click', function() {
-				  $.getJSON($SCRIPT_ROOT + '/_import_string', {
+				  $.post($SCRIPT_ROOT + '/_import_string', {
 					pok: $("#importBox").val()
 				  }, function(data) {
 					  var toSelect = data.result;
@@ -30,7 +40,7 @@
 			  
 			  $(function() {
 				$('a#add').bind('click', function() {
-				  $.getJSON($SCRIPT_ROOT + '/_import_string', {
+				  $.post($SCRIPT_ROOT + '/_import_string', {
 					pok: $("#importBox").val()
 				  }, function(data) {
 					  var toSelect = data.result;
@@ -46,8 +56,33 @@
 			  
 			  
 			  $(function() {
+				$('a#sub').bind('click', function() {
+				  $.post($SCRIPT_ROOT + '/_import_string', {
+					pok: $("#importBox").val()
+				  }, function(data) {
+					  var toSelect = data.result;
+
+					  for (i=0; i < toSelect.length; i++) {
+						$( "#" + toSelect[i] ).removeClass("select")
+					  }
+					  return false;
+				  });
+
+				});
+			  });
+			  
+			  
+			  $(function() {
 				$('a#invert').bind('click', function() {
 					$(".pokemon").toggleClass("select")
+					var arrayOfIds = $.map($(".select"), function(n, i){
+						  return n.id;
+						});
+					  $.getJSON($SCRIPT_ROOT + '/_generate_string', {
+						pok: arrayOfIds
+					  }, function(data) {
+						$("#result").val(data.result);
+					  });
 				  
 
 				});
@@ -66,7 +101,7 @@
 				var arrayOfIds = $.map($(".select"), function(n, i){
 					  return n.id;
 					});
-				  $.getJSON($SCRIPT_ROOT + '/_generate_string', {
+				  $.post($SCRIPT_ROOT + '/_generate_string', {
 					pok: arrayOfIds
 				  }, function(data) {
 					$("#result").val(data.result);
@@ -76,6 +111,7 @@
 		<input type=text size=20 id=importBox>
 		<a href=# id=import>Import string</a>
 		<a href=# id=add>Add string</a>
+		<a href=# id=sub>Subtract string</a>
 		<a href=# id=invert>Invert string</a>
 		<br />
 		<input type="text" value="" id="result" readonly>
