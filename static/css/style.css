@@ -1,3 +1,19 @@
+h1 {
+	display: flex;
+	justify-content: center;
+}
+
+input {
+	width: 350px;
+}
+
+#controls {
+	display: grid;
+	justify-content: center;
+	grid-row-gap: 3px;
+}
+
+
 #result {
 	word-wrap: break-word;
 }
@@ -6,19 +22,37 @@
 	display: flex;
 	flex-wrap: wrap;
 	flex-direction: row;
-	margin: 20px;
+	margin: 3px;
 	justify-content: center;
+	grid-gap: 3px;
 }
+
+.control-row {
+	display: flex;
+    grid-column-gap: 3px;
+}
+
+.button {
+	position: relative;
+    background-color: #E9FAF9;
+    padding: 5px;
+    border-spacing: 10px 10px;
+    border-radius: 5px;
+    border-width: 0;
+	box-shadow: 2px 2px #9BB;
+}
+
 
 .pokemon {
 	position: relative;
-    border: 1px solid #000;
     background-color: #E9FAF9;
     padding: 5px;
     border-spacing: 10px 10px;
     border-radius: 5px;
     width: 6.6em;
     height: 8em;
+    border-width: 0;
+	box-shadow: 2px 2px #9BB;
 }
 
 .pokemon-image {

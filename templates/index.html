@@ -22,122 +22,36 @@
 				enable_page_level_ads: true
 			});
 		</script>
-
+		
+		<h1>Pokemon Go Search String Tool</h1>
 	</head>
 	<body>
-		<script type=text/javascript>
-			  $(function() {
-				$('a#import').bind('click', function() {
-				  $.post($SCRIPT_ROOT + '/_import_string', {
-					pok: $("#importBox").val()
-				  }, function(data) {
-					  var toSelect = data.result;
-					  $(".pokemon").removeClass("select")
-
-
-					  for (i=0; i < toSelect.length; i++) {
-						$( "#" + toSelect[i] ).addClass("select")
-					  }
-					  getResult();
-					  return false;
-				  });
-
-				});
-			  });
-			  
-			  
-			  $(function() {
-				$('a#add').bind('click', function() {
-				  $.post($SCRIPT_ROOT + '/_import_string', {
-					pok: $("#importBox").val()
-				  }, function(data) {
-					  var toSelect = data.result;
-
-					  for (i=0; i < toSelect.length; i++) {
-						$( "#" + toSelect[i] ).addClass("select")
-					  }
-					  getResult();
-					  return false;
-				  });
-
-				});
-			  });
-			  
-			  
-			$(function() {
-				$('a#sub').bind('click', function() {
-				$.post($SCRIPT_ROOT + '/_import_string', {
-					pok: $("#importBox").val()
-				}, function(data) {
-					var toSelect = data.result;
-				
-					for (i=0; i < toSelect.length; i++) {
-						$( "#" + toSelect[i] ).removeClass("select")
-					}
-					
-					getResult();
-					return false;
-				});
-												
-				});
-			});
-			  
-			  
-			  $(function() {
-				$('a#invert').bind('click', function() {
-					$(".pokemon").toggleClass("select")
-					var arrayOfIds = $.map($(".select"), function(n, i){
-						  return n.id;
-						});
-					  $.getJSON($SCRIPT_ROOT + '/_generate_string', {
-						pok: arrayOfIds
-					  }, function(data) {
-						$("#result").val(data.result);
-					  });
-				  
-					getResult();
-				});
-			  });
-			  
-			  
-			function copy () {
-				var copyText = document.getElementById("result");
-				copyText.select();
-				document.execCommand("Copy");
-			}
-		</script>
-		<script type=text/javascript>
-			function select(elem) {
-				$(elem).toggleClass("select")
-				
-				getResult();
-			};
-			
-			function getResult() {
-				var arrayOfIds = $.map($(".select"), function(n, i){
-					return n.id;
-				});
-				$.post($SCRIPT_ROOT + '/_generate_string', {
-					pok: arrayOfIds
-				}, function(data) {
-					$("#result").val(data.result);
-				});
-			}
-		</script>
-		<input type=text size=20 id=importBox>
-		<a href=# id=import>Import string</a>
-		<a href=# id=add>Add string</a>
-		<a href=# id=sub>Subtract string</a>
-		<a href=# id=invert>Invert string</a>
-		<br />
-		<input type="text" value="" id="result" readonly>
-		<button type="button" onclick="copy()">Copy string</button>
+		<script type=text/javascript src="{{url_for('static', filename='js/scripts.js') }}"></script>
+		
+		<div id="controls">
+			<div class="control-row">
+				<input type="text" id=importBox> </textarea>
+				<div class="button" id=import>Import string</div>
+				<div class="button" id=add>Add string</div>
+				<div class="button" id=sub>Subtract string</div>
+				<div class="button" id=invert>Invert string</div>
+			</div>
+			<div class="control-row">
+				<input type="text" value="" id="result" readonly> </textarea>
+				<div class="button" onclick="copy()">Copy string</div>
+			</div>
+			<div class="control-row">
+				<div>Sort options</div>
+				<div class="button" onclick="sortDex()">Dex number</div>
+				<div class="button" onclick="sortFamily()">Family</div>
+			</div>
+		</div>
 
 		
 		
 		<div id="pokemon-list">
 			{% for poke in pokemon %}
-			<div id="{{ poke['no'] }}" class="pokemon {{ poke['family'] }} gen-{{ poke['gen'] }}" name="{{ poke['stage'] }}" onclick=select(this)>
+			<div id="{{ poke['no'] }}" class="pokemon" data-family={{ poke['family'] }} data-stage={{ poke['stage'] }} data-gen={{ poke['gen'] }} onclick=select(this)>
 				<div class="pokemon-no">{{ poke['no'] }}</div>
 				<img class="pokemon-image" src="static/images/{{ poke['no'] }}.png">
 				<div class="pokemon-label">{{ poke['name'] }}</div>
