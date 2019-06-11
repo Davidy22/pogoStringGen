@@ -87,17 +87,14 @@ function getResult() {
 
 function sortFamily() {
 	result = $('div.list-item').sort(function(a,b) {		
-		var af = $(a).data('family');
-		var bf = $(b).data('family');
-		
-		if (af == bf) {
+		if ($(a).data('family') == $(b).data('family')) {
 			if ($(a).data('stage') == $(b).data('stage')) {
-				return $(a).data('dex') > $(b).data('dex');
+				return $(a).data('dex') >= $(b).data('dex');
 			} else {
 				return $(a).data('stage') >= $(b).data('stage');
 			}
 		} else {
-			return af > bf;
+			return $(a).data('family') >= $(b).data('family');
 		}
 	})
 
@@ -106,7 +103,7 @@ function sortFamily() {
 
 function sortDex() {
 	result = $('div.list-item').sort(function(a,b) {
-		return $(a).data('dex') > $(b).data('dex');
+		return $(a).data('dex') >= $(b).data('dex');
 	});
 
 	$("#pokemon-list").html(result);
