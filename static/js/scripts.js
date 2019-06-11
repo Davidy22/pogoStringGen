@@ -57,10 +57,6 @@ $(function() {
 $(function() {
 	$('div#invert').bind('click', function() {
 		$(".pokemon").toggleClass("select")
-		var arrayOfIds = $.map($(".select"), function(n, i){
-			return n.id;
-		});
-
 		getResult();
 	});
 });
@@ -90,14 +86,18 @@ function getResult() {
 }
 
 function sortFamily() {
-	result = $('div.pokemon').sort(function(a,b) {
-		var af = $(a).data('family')
-		var bf = $(b).data('family')
+	result = $('div.list-item').sort(function(a,b) {		
+		var af = $(a).data('family');
+		var bf = $(b).data('family');
 		
 		if (af == bf) {
-			return $(a).data('stage') >= $(b).data('stage')
+			if ($(a).data('stage') == $(b).data('stage')) {
+				return $(a).data('dex') > $(b).data('dex');
+			} else {
+				return $(a).data('stage') >= $(b).data('stage');
+			}
 		} else {
-			return af >= bf;
+			return af > bf;
 		}
 	})
 
@@ -105,9 +105,50 @@ function sortFamily() {
 }
 
 function sortDex() {
-	result = $('div.pokemon').sort(function(a,b) {
-		return parseInt($(a).attr("id")) > parseInt($(b).attr("id"))
-	})
+	result = $('div.list-item').sort(function(a,b) {
+		return $(a).data('dex') > $(b).data('dex');
+	});
 
 	$("#pokemon-list").html(result);
 }
+
+function selectAll() {
+	$(".pokemon").addClass("select")
+	getResult();
+}
+function selectNone() {
+	$(".pokemon").removeClass("select")
+	getResult();
+}
+function selectStageOne() {
+	$(".pokemon").each(function (){
+		if ($(this).data("stage") == 1) {
+			$(this).addClass("select")
+		}
+	});
+	getResult();
+	
+}
+function selectStageTwo() {
+	$(".pokemon").each(function (){
+		if ($(this).data("stage") == 2) {
+			$(this).addClass("select")
+		}
+	});
+	getResult();
+	
+}
+function selectStageThree() {
+	$(".pokemon").each(function (){
+		if ($(this).data("stage") == 3) {
+			$(this).addClass("select")
+		}
+	});
+	getResult();
+	
+}
+
+$( document ).ready(function(){
+	sortDex();
+
+});

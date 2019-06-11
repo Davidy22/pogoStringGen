@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>	
+		<link rel="shortcut icon" href="static/images/favicon.ico" />
+		<title>{% block title %}{% endblock %} - PogoString</title>
+		<link rel="stylesheet" type="text/css" href="static/css/style.css" />
+		<script type=text/javascript src="{{url_for('static', filename='js/jquery-3.4.1.js') }}"></script>
+		<script type=text/javascript>
+			$SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+		</script>
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-49267605-2"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+
+			gtag('config', 'UA-49267605-2');
+		</script>
+		<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		<script>
+			(adsbygoogle = window.adsbygoogle || []).push({
+				google_ad_client: "ca-pub-2868886534450016",
+				enable_page_level_ads: true
+			});
+		</script>
+		
+		{% block header %}{% endblock %}
+	</head>
+	<body>
+		{% block content %}{% endblock %}
+	</body>
+	
+	<footer>
+		<hr>
+		<p>Pokémon And All Respective Names are Trademark & © of Nintendo 1996-2019 Pokémon GO is Trademark & © of Niantic, Inc.</p>
+		<p>This website is not affiliated with Niantic Inc., The Pokemon Company or Nintendo.</p>
+		<p><a href="https://github.com/Davidy22/pogoStringGen">Source code for this site.</a></p>
+		<p><a href="/privacy">Obligatory web privacy policy.</a></p>
+	
+	</footer>
+</html>

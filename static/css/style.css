@@ -24,12 +24,21 @@ input {
 	flex-direction: row;
 	margin: 3px;
 	justify-content: center;
-	grid-gap: 3px;
+	grid-gap: 4px;
 }
 
 .control-row {
 	display: flex;
     grid-column-gap: 3px;
+}
+
+.textLabel {
+	position: relative;
+    background-color: #C9DAD9;
+    padding: 5px;
+    border-spacing: 10px 10px;
+    border-radius: 5px;
+    border-width: 0;
 }
 
 .button {
@@ -42,6 +51,18 @@ input {
 	box-shadow: 2px 2px #9BB;
 }
 
+
+.button:active {
+    background-color: #A9CAC9;
+}
+
+.gen-header {
+	width: 100%;
+    padding-left: 50px;
+    padding-top: 10px;
+    font-size: 25px;
+    font-weight: bold;
+}
 
 .pokemon {
 	position: relative;

@@ -1,65 +1,57 @@
-<!DOCTYPE html>
-<html>
-	<head>	
-		<link rel="stylesheet" type="text/css" href="static/css/style.css" />
-		<script type=text/javascript src="{{url_for('static', filename='js/jquery-3.4.1.js') }}"></script>
-		<script type=text/javascript>
-			$SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
-		</script>
-		<!-- Global site tag (gtag.js) - Google Analytics -->
-		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-49267605-2"></script>
-		<script>
-			window.dataLayer = window.dataLayer || [];
-			function gtag(){dataLayer.push(arguments);}
-			gtag('js', new Date());
+{% extends 'template.html' %}
 
-			gtag('config', 'UA-49267605-2');
-		</script>
-		<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-		<script>
-			(adsbygoogle = window.adsbygoogle || []).push({
-				google_ad_client: "ca-pub-2868886534450016",
-				enable_page_level_ads: true
-			});
-		</script>
+{% block title %}Pokemon Go Search String Tool{% endblock %}
 		
-		<h1>Pokemon Go Search String Tool</h1>
-	</head>
-	<body>
-		<script type=text/javascript src="{{url_for('static', filename='js/scripts.js') }}"></script>
-		
-		<div id="controls">
-			<div class="control-row">
-				<input type="text" id=importBox> </textarea>
-				<div class="button" id=import>Import string</div>
-				<div class="button" id=add>Add string</div>
-				<div class="button" id=sub>Subtract string</div>
-				<div class="button" id=invert>Invert string</div>
-			</div>
-			<div class="control-row">
-				<input type="text" value="" id="result" readonly> </textarea>
-				<div class="button" onclick="copy()">Copy string</div>
-			</div>
-			<div class="control-row">
-				<div>Sort options</div>
-				<div class="button" onclick="sortDex()">Dex number</div>
-				<div class="button" onclick="sortFamily()">Family</div>
-			</div>
-		</div>
+{% block header %}<h1>Pokemon Go Search String Tool</h1>{% endblock %}
 
-		
-		
-		<div id="pokemon-list">
-			{% for poke in pokemon %}
-			<div id="{{ poke['no'] }}" class="pokemon" data-family={{ poke['family'] }} data-stage={{ poke['stage'] }} data-gen={{ poke['gen'] }} onclick=select(this)>
-				<div class="pokemon-no">{{ poke['no'] }}</div>
-				<img class="pokemon-image" src="static/images/{{ poke['no'] }}.png">
-				<div class="pokemon-label">{{ poke['name'] }}</div>
+{% block content %}
+<script type=text/javascript src="{{url_for('static', filename='js/scripts.js') }}"></script>
 
-			</div>
-			{% endfor %}
-
-	
+<div id="controls">
+	<div class="control-row">
+		<input type="text" id=importBox> </textarea>
+		<div class="button" id=import>Import string</div>
+		<div class="button" id=add>Add string</div>
+		<div class="button" id=sub>Subtract string</div>
+		<div class="button" id=invert>Invert string</div>
 	</div>
-	</body>
-</html>
+	<div class="control-row">
+		<input type="text" value="" id="result" readonly> </textarea>
+		<div class="button" onclick="copy()">Copy string</div>
+	</div>
+	<div class="control-row">
+		<div class="textLabel">Sort options:</div>
+		<div class="button" onclick="sortDex()">Dex number</div>
+		<div class="button" onclick="sortFamily()">Family</div>
+	</div>
+	<div class="control-row">
+		<div class="textLabel">Quick select:</div>
+		<div class="button" onclick="selectAll()">Select all</div>
+		<div class="button" onclick="selectNone()">Select none</div>
+		<div class="button" onclick="selectStageOne()">Select stage one pokemon</div>
+		<div class="button" onclick="selectStageTwo()">Select stage two pokemon</div>
+		<div class="button" onclick="selectStageThree()">Select stage three pokemon</div>
+	</div>
+</div>
+
+
+<div id="pokemon-list">
+	{% for poke in pokemon %}
+	<div id="{{ poke['no'] }}" class="pokemon list-item" data-family={{ poke['family'] }} data-stage={{ poke['stage'] }} data-gen={{ poke['gen'] }} data-dex={{ poke['no'] }} onclick=select(this)>
+		<div class="pokemon-no">{{ poke['no'] }}</div>
+		<img class="pokemon-image" src="static/images/{{ poke['no'] }}.png">
+		<div class="pokemon-label">{{ poke['name'] }}</div>
+
+	</div>
+	{% endfor %}
+	<div id="Gen1" class="gen-header list-item" data-family=0.5 data-dex=0.5>Gen 1</div>
+	<div id="Gen2" class="gen-header list-item" data-family=78.5 data-dex=151.5>Gen 2</div>
+	<div id="Gen3" class="gen-header list-item" data-family=129.5 data-dex=251.5>Gen 3</div>
+	<div id="Gen4" class="gen-header list-item" data-family=202.5 data-dex=386.5>Gen 4</div>
+	<div id="Gen5" class="gen-header list-item" data-family=254.5 data-dex=493.5>Gen 5</div>
+	<div id="Gen6" class="gen-header list-item" data-family=336.5 data-dex=649.5>Gen 6</div>
+	<div id="Gen7" class="gen-header list-item" data-family=373.5 data-dex=721.5>Gen 7</div>
+	<div id="Gen8" class="gen-header list-item" data-family=427.5 data-dex=807.5>Gen 8</div>
+
+</div>
+{% endblock %}

@@ -26,3 +26,7 @@ def import_string():
 @app.route('/')
 def index():
 	return render_template('index.html', pokemon = pokemonList)
+
+@app.route('/privacy')
+def privacy():
+	return render_template('policy.html')
