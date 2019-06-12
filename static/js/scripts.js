@@ -169,11 +169,11 @@ function selectStageThree() {
 	
 }
 function selectBaby() {
-	$(".baby").removeClass("select")
+	$(".baby").addClass("select")
 	getResult();
 }
 function selectEvolve() {
-	$(".can-evolve").removeClass("select")
+	$(".can-evolve").addClass("select")
 	getResult();
 }
 
