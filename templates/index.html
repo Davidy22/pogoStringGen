@@ -20,38 +20,46 @@
 		<div class="button" onclick="copy()">Copy string</div>
 	</div>
 	<div class="control-row">
-		<div class="textLabel">Sort options:</div>
-		<div class="button" onclick="sortDex()">Dex number</div>
-		<div class="button" onclick="sortFamily()">Family</div>
+		<div class="button-box">
+			<div class="textLabel">Sort options:</div>
+			<div class="button" onclick="sortDex()">Dex number</div>
+			<div class="button" onclick="sortFamily()">Family</div>
+			<div class="button" onclick="sortAZ()">A-Z</div>
+			<div class="button" onclick="sortZA()">Z-A</div>
+		</div>
 	</div>
 	<div class="control-row">
 		<div class="textLabel">Quick select:</div>
-		<div class="button" onclick="selectAll()">All</div>
-		<div class="button" onclick="selectNone()">None</div>
-		<div class="button" onclick="selectStageOne()">Stage one pokemon</div>
-		<div class="button" onclick="selectStageTwo()">Stage two pokemon</div>
-		<div class="button" onclick="selectStageThree()">Stage three pokemon</div>
+		<div class="button-box">
+			<div class="button" onclick="selectAll()">All</div>
+			<div class="button" onclick="selectNone()">None</div>
+			<div class="button" onclick="selectStageOne()">Stage one</div>
+			<div class="button" onclick="selectStageTwo()">Stage two</div>
+			<div class="button" onclick="selectStageThree()">Stage three</div>
+			<div class="button" onclick="selectBaby()">Baby</div>
+			<div class="button" onclick="selectEvolve()">Can evolve</div>
+		</div>
 	</div>
 </div>
 
 
 <div id="pokemon-list">
 	{% for poke in pokemon %}
-	<div id="{{ poke['no'] }}" class="pokemon list-item" data-family={{ poke['family'] }} data-stage={{ poke['stage'] }} data-gen={{ poke['gen'] }} data-dex={{ poke['no'] }} onclick=select(this)>
+	<div id="{{ poke['no'] }}" class="pokemon list-item {% for keyword in poke['keywords'] %}{{ keyword }} {% endfor %}" data-family={{ poke['family'] }} data-stage={{ poke['stage'] }} data-gen={{ poke['gen'] }} data-dex={{ poke['no'] }} onclick=select(this)>
 		<div class="pokemon-no">{{ poke['no'] }}</div>
 		<img class="pokemon-image" src="static/images/{{ poke['no'] }}.png">
 		<div class="pokemon-label">{{ poke['name'] }}</div>
 
 	</div>
 	{% endfor %}
-	<div id="Gen1" class="gen-header list-item" data-family=0.5 data-dex=0.5>Gen 1</div>
-	<div id="Gen2" class="gen-header list-item" data-family=78.5 data-dex=151.5>Gen 2</div>
-	<div id="Gen3" class="gen-header list-item" data-family=129.5 data-dex=251.5>Gen 3</div>
-	<div id="Gen4" class="gen-header list-item" data-family=202.5 data-dex=386.5>Gen 4</div>
-	<div id="Gen5" class="gen-header list-item" data-family=254.5 data-dex=493.5>Gen 5</div>
-	<div id="Gen6" class="gen-header list-item" data-family=336.5 data-dex=649.5>Gen 6</div>
-	<div id="Gen7" class="gen-header list-item" data-family=373.5 data-dex=721.5>Gen 7</div>
-	<div id="Gen8" class="gen-header list-item" data-family=427.5 data-dex=807.5>Gen 8</div>
+	<div id="Gen1" class="hide gen-header list-item" data-family=0.5 data-dex=0.5>Gen 1</div>
+	<div id="Gen2" class="hide gen-header list-item" data-family=78.5 data-dex=151.5>Gen 2</div>
+	<div id="Gen3" class="hide gen-header list-item" data-family=129.5 data-dex=251.5>Gen 3</div>
+	<div id="Gen4" class="hide gen-header list-item" data-family=202.5 data-dex=386.5>Gen 4</div>
+	<div id="Gen5" class="hide gen-header list-item not-in-game" data-family=254.5 data-dex=493.5>Gen 5</div>
+	<div id="Gen6" class="hide gen-header list-item not-in-game" data-family=336.5 data-dex=649.5>Gen 6</div>
+	<div id="Gen7" class="hide gen-header list-item not-in-game" data-family=373.5 data-dex=721.5>Gen 7</div>
+	<div id="Gen8" class="hide gen-header list-item" data-family=427.5 data-dex=807.5>Gen 8</div>
 
 </div>
 {% endblock %}

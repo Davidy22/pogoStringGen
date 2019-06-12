@@ -56,6 +56,14 @@ input {
     background-color: #A9CAC9;
 }
 
+.button-box {
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+	margin: 3px;
+	grid-gap: 4px;
+}
+
 .gen-header {
 	width: 100%;
     padding-left: 50px;
@@ -74,6 +82,14 @@ input {
     height: 8em;
     border-width: 0;
 	box-shadow: 2px 2px #9BB;
+}
+
+.not-in-game {
+	display: none;
+}
+
+.hide {
+	display: none;
 }
 
 .pokemon-image {
@@ -120,4 +136,11 @@ input {
 
 body {
     background-color:#D9EAE9;
+}
+
+#ad {
+	width: 40%;
+	font-size: 11px;
+	margin: 0 auto;
+	text-align: center;
 }

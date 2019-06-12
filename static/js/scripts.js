@@ -99,6 +99,7 @@ function sortFamily() {
 	})
 
 	$("#pokemon-list").html(result);
+	$(".gen-header").removeClass("hide");
 }
 
 function sortDex() {
@@ -107,6 +108,29 @@ function sortDex() {
 	});
 
 	$("#pokemon-list").html(result);
+	$(".gen-header").removeClass("hide");
+}
+
+function sortAZ() {
+	result = $('div.list-item').sort(function(a,b) {
+		return $(a).find("> .pokemon-label").text() >= $(b).find("> .pokemon-label").text();
+	});
+	
+
+	$("#pokemon-list").html(result);
+	$(".gen-header").addClass("hide");
+	
+}
+
+function sortZA() {
+	result = $('div.list-item').sort(function(a,b) {
+		return $(a).find("> .pokemon-label").text() <= $(b).find("> .pokemon-label").text();
+	});
+	
+
+	$("#pokemon-list").html(result);
+	$(".gen-header").addClass("hide");
+	
 }
 
 function selectAll() {
@@ -143,6 +167,14 @@ function selectStageThree() {
 	});
 	getResult();
 	
+}
+function selectBaby() {
+	$(".baby").removeClass("select")
+	getResult();
+}
+function selectEvolve() {
+	$(".can-evolve").removeClass("select")
+	getResult();
 }
 
 $( document ).ready(function(){
