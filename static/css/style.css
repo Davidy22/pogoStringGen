@@ -3,6 +3,17 @@ h1 {
 	justify-content: center;
 }
 
+footer {
+    background-color: #748F8D;
+	font-size: 14px;
+	padding-top:8px;
+	float: left;
+	width: 106%;
+	margin-left: -3%;
+	text-align: center;
+	margin-top: 30px;
+}
+
 input {
 	width: 350px;
 }
@@ -139,7 +150,6 @@ body {
 }
 
 #ad {
-	width: 40%;
 	font-size: 11px;
 	margin: 0 auto;
 	text-align: center;
