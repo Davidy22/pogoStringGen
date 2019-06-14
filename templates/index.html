@@ -31,13 +31,18 @@
 	<div class="control-row">
 		<div class="textLabel">Quick select:</div>
 		<div class="button-box">
-			<div class="button" onclick="selectAll()">All</div>
-			<div class="button" onclick="selectNone()">None</div>
-			<div class="button" onclick="selectStageOne()">Stage one</div>
-			<div class="button" onclick="selectStageTwo()">Stage two</div>
-			<div class="button" onclick="selectStageThree()">Stage three</div>
-			<div class="button" onclick="selectBaby()">Baby</div>
-			<div class="button" onclick="selectEvolve()">Can evolve</div>
+			<div class="button" onclick="selectPokemon('.pokemon')">All</div>
+			<div class="button" onclick="deselectPokemon('.pokemon')">None</div>
+			<div class="button" onclick="selectStage(1)">Stage one</div>
+			<div class="button" onclick="selectStage(2)">Stage two</div>
+			<div class="button" onclick="selectStage(3)">Stage three</div>
+			<div class="button" onclick="selectPokemon('.baby')">Baby</div>
+			<div class="button" onclick="selectPokemon('.can-evolve')">Can evolve</div>
+			<div class="button" onclick="selectPokemon('.12-candy')">12 candy</div>
+			<div class="button" onclick="selectPokemon('.25-candy')">25 candy</div>
+			<div class="button" onclick="selectPokemon('.50-candy')">50 candy</div>
+			<div class="button" onclick="selectPokemon('.100-candy')">100 candy</div>
+			<div class="button" onclick="selectPokemon('.400-candy')">400 candy</div>
 		</div>
 	</div>
 </div>

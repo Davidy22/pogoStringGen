@@ -133,49 +133,26 @@ function sortZA() {
 	
 }
 
-function selectAll() {
-	$(".pokemon").addClass("select")
+function selectPokemon(criteria) {
+	$(criteria).addClass("select")
 	getResult();
 }
-function selectNone() {
-	$(".pokemon").removeClass("select")
+
+function deselectPokemon(criteria) {
+	$(criteria).removeClass("select")
 	getResult();
 }
-function selectStageOne() {
+
+
+function selectStage(stage) {
 	$(".pokemon").each(function (){
-		if ($(this).data("stage") == 1) {
+		if ($(this).data("stage") == stage) {
 			$(this).addClass("select")
 		}
 	});
 	getResult();
-	
 }
-function selectStageTwo() {
-	$(".pokemon").each(function (){
-		if ($(this).data("stage") == 2) {
-			$(this).addClass("select")
-		}
-	});
-	getResult();
-	
-}
-function selectStageThree() {
-	$(".pokemon").each(function (){
-		if ($(this).data("stage") == 3) {
-			$(this).addClass("select")
-		}
-	});
-	getResult();
-	
-}
-function selectBaby() {
-	$(".baby").addClass("select")
-	getResult();
-}
-function selectEvolve() {
-	$(".can-evolve").addClass("select")
-	getResult();
-}
+
 
 $( document ).ready(function(){
 	sortDex();
