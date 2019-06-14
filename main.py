@@ -1,9 +1,7 @@
 from flask import Flask, jsonify, render_template, request
-from flask_minify import minify
 import json
 from src.parse import *
 app = Flask(__name__)
-minify(app=app)
 
 file = open("data/dump.json")
 pokemon = json.load(file)
