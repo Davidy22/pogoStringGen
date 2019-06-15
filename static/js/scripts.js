@@ -152,6 +152,14 @@ function selectStage(stage) {
 	});
 	getResult();
 }
+function deselectStage(stage) {
+	$(".pokemon").each(function (){
+		if ($(this).data("stage") == stage) {
+			$(this).removeClass("select")
+		}
+	});
+	getResult();
+}
 
 
 $( document ).ready(function(){

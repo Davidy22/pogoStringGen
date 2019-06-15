@@ -9,17 +9,60 @@
 
 {% block content %}
 <script type=text/javascript src="{{url_for('static', filename='js/scripts.js') }}"></script>
+<div id="gen-nav">
+	<a href="#Gen1">
+		<div class="gen-nav-button">
+			Gen 1
+		</div>
+	</a>
+	<a href="#Gen2">
+		<div class="gen-nav-button">
+			Gen 2
+		</div>
+	</a>
+	<a href="#Gen3">
+		<div class="gen-nav-button">
+			Gen 3
+		</div>
+	</a>
+	<a href="#Gen4">
+		<div class="gen-nav-button">
+			Gen 4
+		</div>
+	</a>
+	<a href="#Gen5" class="not-in-game">
+		<div class="gen-nav-button">
+			Gen 5
+		</div>
+	</a>
+	<a href="#Gen6" class="not-in-game">
+		<div class="gen-nav-button">
+			Gen 6
+		</div>
+	</a>
+	<a href="#Gen7" class="not-in-game">
+		<div class="gen-nav-button">
+			Gen 7
+		</div>
+	</a>
+	<a href="#Gen8">
+		<div class="gen-nav-button">
+			Gen 8
+		</div>
+	</a>
+</div>
 
 <div id="controls">
 	<div class="control-row">
-		<input type="text" id=importBox> </textarea>
-		<div class="button" id=import>Import</div>
-		<div class="button" id=add>Add</div>
-		<div class="button" id=sub>Subtract</div>
-		<div class="button" id=invert>Invert</div>
+		<textarea id="importBox"> </textarea>
+		<div class="button" id="import">Import</div>
+		<div class="button" id="add">Add</div>
+		<div class="button" id="sub">Subtract</div>
+		<div class="button" id="invert">Invert</div>
 	</div>
 	<div class="control-row">
-		<input type="text" value="" id="result" readonly> </textarea>
+		
+		<textarea id="result" readonly> </textarea>
 		<div class="button" onclick="copy()">Copy string</div>
 	</div>
 	<div class="control-row">
@@ -35,7 +78,6 @@
 		<div class="textLabel">Quick select:</div>
 		<div class="button-box">
 			<div class="button" onclick="selectPokemon('.pokemon')">All</div>
-			<div class="button" onclick="deselectPokemon('.pokemon')">None</div>
 			<div class="button" onclick="selectStage(1)">Stage one</div>
 			<div class="button" onclick="selectStage(2)">Stage two</div>
 			<div class="button" onclick="selectStage(3)">Stage three</div>
@@ -51,16 +93,26 @@
 			<div class="button" onclick="selectPokemon('.mythical')">Mythical</div>
 		</div>
 	</div>
-	<div>
-		<a href="#Gen1">Gen 1</a>
-		<a href="#Gen2">Gen 2</a>
-		<a href="#Gen3">Gen 3</a>
-		<a href="#Gen4">Gen 4</a>
-		<a href="#Gen5">Gen 5</a>
-		<a href="#Gen6">Gen 6</a>
-		<a href="#Gen7">Gen 7</a>
-		<a href="#Gen8">Gen 8</a>
+	<div class="control-row">
+		<div class="textLabel">Quick deselect:</div>
+		<div class="button-box">
+			<div class="button" onclick="deselectPokemon('.pokemon')">All</div>
+			<div class="button" onclick="deselectStage(1)">Stage one</div>
+			<div class="button" onclick="deselectStage(2)">Stage two</div>
+			<div class="button" onclick="deselectStage(3)">Stage three</div>
+			<div class="button" onclick="deselectPokemon('.baby')">Baby</div>
+			<div class="button" onclick="deselectPokemon('.can-evolve')">Can evolve</div>
+			<div class="button" onclick="deselectPokemon('.12-candy')">12 candy</div>
+			<div class="button" onclick="deselectPokemon('.25-candy')">25 candy</div>
+			<div class="button" onclick="deselectPokemon('.50-candy')">50 candy</div>
+			<div class="button" onclick="deselectPokemon('.100-candy')">100 candy</div>
+			<div class="button" onclick="deselectPokemon('.400-candy')">400 candy</div>
+			<div class="button" onclick="deselectPokemon('.shiny')">Shiny</div>
+			<div class="button" onclick="deselectPokemon('.legendary')">Legendary</div>
+			<div class="button" onclick="deselectPokemon('.mythical')">Mythical</div>
+		</div>
 	</div>
+
 </div>
 
 
@@ -73,14 +125,14 @@
 
 	</div>
 	{% endfor %}
-	<div id="Gen1" class="hide gen-header list-item" data-family=0.5 data-dex=0.5>Gen 1</div>
-	<div id="Gen2" class="hide gen-header list-item" data-family=78.5 data-dex=151.5>Gen 2</div>
-	<div id="Gen3" class="hide gen-header list-item" data-family=129.5 data-dex=251.5>Gen 3</div>
-	<div id="Gen4" class="hide gen-header list-item" data-family=202.5 data-dex=386.5>Gen 4</div>
-	<div id="Gen5" class="hide gen-header list-item not-in-game" data-family=254.5 data-dex=493.5>Gen 5</div>
-	<div id="Gen6" class="hide gen-header list-item not-in-game" data-family=336.5 data-dex=649.5>Gen 6</div>
-	<div id="Gen7" class="hide gen-header list-item not-in-game" data-family=373.5 data-dex=721.5>Gen 7</div>
-	<div id="Gen8" class="hide gen-header list-item" data-family=427.5 data-dex=807.5>Gen 8</div>
+	<div id="Gen1" class="hide gen-header list-item" data-family=0.5 data-dex=0.5>Gen 1 <a href="#"><div class="button">Return to top</div></a></div>
+	<div id="Gen2" class="hide gen-header list-item" data-family=78.5 data-dex=151.5>Gen 2 <a href="#"><div class="button">Return to top</div></a></div>
+	<div id="Gen3" class="hide gen-header list-item" data-family=129.5 data-dex=251.5>Gen 3 <a href="#"><div class="button">Return to top</div></a></div>
+	<div id="Gen4" class="hide gen-header list-item" data-family=202.5 data-dex=386.5>Gen 4 <a href="#"><div class="button">Return to top</div></a></div>
+	<div id="Gen5" class="hide gen-header list-item not-in-game" data-family=254.5 data-dex=493.5>Gen 5 <a href="#"><div class="button">Return to top</div></a></div>
+	<div id="Gen6" class="hide gen-header list-item not-in-game" data-family=336.5 data-dex=649.5>Gen 6 <a href="#"><div class="button">Return to top</div></a></div>
+	<div id="Gen7" class="hide gen-header list-item not-in-game" data-family=373.5 data-dex=721.5>Gen 7 <a href="#"><div class="button">Return to top</div></a></div>
+	<div id="Gen8" class="hide gen-header list-item" data-family=427.5 data-dex=807.5>Gen 8 <a href="#"><div class="button">Return to top</div></a></div>
 
 </div>
 {% endblock %}
