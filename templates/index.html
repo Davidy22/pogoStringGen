@@ -2,7 +2,10 @@
 
 {% block title %}Pokemon Go Search String Tool{% endblock %}
 		
-{% block header %}<h1>Pokemon Go Search String Tool</h1>{% endblock %}
+{% block header %}
+<h1>Pokemon Go Search String Tool</h1>
+<h2></h2>
+{% endblock %}
 
 {% block content %}
 <script type=text/javascript src="{{url_for('static', filename='js/scripts.js') }}"></script>
@@ -43,7 +46,20 @@
 			<div class="button" onclick="selectPokemon('.50-candy')">50 candy</div>
 			<div class="button" onclick="selectPokemon('.100-candy')">100 candy</div>
 			<div class="button" onclick="selectPokemon('.400-candy')">400 candy</div>
+			<div class="button" onclick="selectPokemon('.shiny')">Shiny</div>
+			<div class="button" onclick="selectPokemon('.legendary')">Legendary</div>
+			<div class="button" onclick="selectPokemon('.mythical')">Mythical</div>
 		</div>
+	</div>
+	<div>
+		<a href="#Gen1">Gen 1</a>
+		<a href="#Gen2">Gen 2</a>
+		<a href="#Gen3">Gen 3</a>
+		<a href="#Gen4">Gen 4</a>
+		<a href="#Gen5">Gen 5</a>
+		<a href="#Gen6">Gen 6</a>
+		<a href="#Gen7">Gen 7</a>
+		<a href="#Gen8">Gen 8</a>
 	</div>
 </div>
 
