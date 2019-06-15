@@ -22,8 +22,9 @@ input {
 	display: grid;
 	justify-content: center;
 	grid-row-gap: 3px;
+	padding-left: 25%;
+	padding-right: 25%;
 }
-
 
 #result {
 	word-wrap: break-word;
