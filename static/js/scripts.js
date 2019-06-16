@@ -169,10 +169,22 @@ function selectStage(stage) {
 	});
 	getResult();
 };
-function deselectStage(stage) {
+function selectRange(lower, upper) {
 	$(".pokemon").each(function (){
-		if ($(this).data("stage") == stage) {
-			$(this).removeClass("select")
+		if ($(this).data("dex") > lower) {
+			if ($(this).data("dex") < upper) {
+				$(this).addClass("select")
+			}
+		}
+	});
+	getResult();
+};
+function deselectRange(lower, upper) {
+	$(".pokemon").each(function (){
+		if ($(this).data("dex") > lower) {
+			if ($(this).data("dex") < upper) {
+				$(this).removeClass("select")
+			}
 		}
 	});
 	getResult();
