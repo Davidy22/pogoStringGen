@@ -154,8 +154,6 @@ textarea {
 
 body {
     background-color:#D9EAE9;
-    position: fixed;
-    width: 100%;
 }
 
 #ad {
@@ -190,4 +188,11 @@ body {
 a {
 	text-decoration: none;
 	outline: 0;
+}
+
+@media only screen and (max-device-width: 480px) {
+	body {
+		position: fixed;
+		width: 100%;
+	}
 }
