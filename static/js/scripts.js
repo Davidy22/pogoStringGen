@@ -66,7 +66,7 @@ function copy () {
 	var copyText = document.getElementById("result");
 		copyText.select();
 		document.execCommand("Copy");
-	}
+};
 	
 function select(elem) {
 	$(elem).toggleClass("select")
@@ -83,7 +83,7 @@ function getResult() {
 	}, function(data) {
 		$("#result").val(data.result);
 	});
-}
+};
 
 function sortFamily() {
 	result = $('div.list-item').sort(function(a,b) {
@@ -105,7 +105,7 @@ function sortFamily() {
 
 	$("#pokemon-list").html(result);
 	$(".gen-header").removeClass("hide");
-}
+};
 
 function sortDex() {
 	result = $('div.list-item').sort(function(a,b) {
@@ -120,7 +120,7 @@ function sortDex() {
 
 	$("#pokemon-list").html(result);
 	$(".gen-header").removeClass("hide");
-}
+};
 
 function sortAZ() {
 	result = $('div.list-item').sort(function(a,b) {
@@ -137,8 +137,7 @@ function sortAZ() {
 
 	$("#pokemon-list").html(result);
 	$(".gen-header").addClass("hide");
-	
-}
+};
 
 function sortZA() {
 	result = $('div.list-item').sort(function(a,b) {
@@ -149,17 +148,17 @@ function sortZA() {
 	$("#pokemon-list").html(result);
 	$(".gen-header").addClass("hide");
 	
-}
+};
 
 function selectPokemon(criteria) {
 	$(criteria).addClass("select")
 	getResult();
-}
+};
 
 function deselectPokemon(criteria) {
 	$(criteria).removeClass("select")
 	getResult();
-}
+};
 
 
 function selectStage(stage) {
@@ -169,7 +168,7 @@ function selectStage(stage) {
 		}
 	});
 	getResult();
-}
+};
 function deselectStage(stage) {
 	$(".pokemon").each(function (){
 		if ($(this).data("stage") == stage) {
@@ -177,7 +176,7 @@ function deselectStage(stage) {
 		}
 	});
 	getResult();
-}
+};
 
 
 $( document ).ready(function(){
