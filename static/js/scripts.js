@@ -86,15 +86,20 @@ function getResult() {
 }
 
 function sortFamily() {
-	result = $('div.list-item').sort(function(a,b) {		
+	result = $('div.list-item').sort(function(a,b) {
 		if ($(a).data('family') == $(b).data('family')) {
 			if ($(a).data('stage') == $(b).data('stage')) {
-				return $(a).data('dex') >= $(b).data('dex');
+				var pick = $(a).data('dex') >= $(b).data('dex');
 			} else {
-				return $(a).data('stage') >= $(b).data('stage');
+				var pick = $(a).data('stage') >= $(b).data('stage');
 			}
 		} else {
-			return $(a).data('family') >= $(b).data('family');
+			var pick = $(a).data('family') >= $(b).data('family');
+		}
+		if (pick) {
+			return 1;
+		} else {
+			return -1;
 		}
 	})
 
@@ -104,7 +109,13 @@ function sortFamily() {
 
 function sortDex() {
 	result = $('div.list-item').sort(function(a,b) {
-		return $(a).data('dex') >= $(b).data('dex');
+		var pick = $(a).data('dex') >= $(b).data('dex');
+		
+		if (pick) {
+			return 1;
+		} else {
+			return -1;
+		}
 	});
 
 	$("#pokemon-list").html(result);
@@ -113,7 +124,14 @@ function sortDex() {
 
 function sortAZ() {
 	result = $('div.list-item').sort(function(a,b) {
-		return $(a).find("> .pokemon-label").text() >= $(b).find("> .pokemon-label").text();
+		var pick = $(a).find("> .pokemon-label").text() >= $(b).find("> .pokemon-label").text();
+		
+		
+		if (pick) {
+			return 1;
+		} else {
+			return -1;
+		}
 	});
 	
 
