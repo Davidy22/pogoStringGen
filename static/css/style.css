@@ -66,6 +66,7 @@ textarea {
 	font-size: 16px;
 	font-weight: normal;
 	display:inline-block;
+    white-space: nowrap;
 }
 
 
@@ -153,6 +154,8 @@ textarea {
 
 body {
     background-color:#D9EAE9;
+    position: fixed;
+    width: 100%;
 }
 
 #ad {
