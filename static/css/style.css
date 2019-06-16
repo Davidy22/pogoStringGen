@@ -189,10 +189,3 @@ a {
 	text-decoration: none;
 	outline: 0;
 }
-
-@media only screen and (max-device-width: 480px) {
-	body {
-		position: fixed;
-		width: 100%;
-	}
-}
