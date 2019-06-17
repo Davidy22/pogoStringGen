@@ -29,20 +29,25 @@ def to_list(parse_tree):
 			
 
 def parse(string):
-	tokens= (("[:;,]", "or"),("[\d\-\s]+", "dex"), ("", "and"))
-	gram = {
-		"EXPR": a(
-			"VALUE", maybe(someof(skip("or"), "VALUE"))
-		)
-		,"VALUE": anyof("dex")
-		}
+	try:
+		tokens= (("[:;,]", "or"),("[^:;,&]+", "dex"), ("&", "and"))
+		gram = {
+			"EXPR": a(
+				"VALUE", maybe(someof(skip("or"), "VALUE"))
+			)
+			,"VALUE": anyof("dex")
+			}
 
-	parser = Parser(tokens, gram)
-	result = parser.parse("EXPR", string)
-	return to_list(result)
+		parser = Parser(tokens, gram)
+		result = parser.parse("EXPR", string)
+		return to_list(result)
+	except:
+		return None
 	
 
 def condense(vals):
+	if vals is None:
+		return "error"
 	vals = [int(val) for val in vals]
 	vals = natural_sort(list(set(vals)))
 	groups = groupby(vals, key=lambda item, c=count():item-next(c))
