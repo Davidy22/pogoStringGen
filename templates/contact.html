@@ -1,16 +1,16 @@
 {% extends "template.html" %}
 
 {% block header %}
-<h1>Contact us</h1>
+<h1>Contact Us</h1>
 {% endblock %}
 
 {% block content %}
-<p>Feeback, requests and other messages welcome.</p>
+<p>Feeback, requests and bug reports here.</p>
 <form method="POST" action="/contact">
     {{ form.csrf_token }}
     {{ form.name.label }} {{ form.name(size=20) }}<br />
     {{ form.email.label }} {{ form.email(size=20) }}<br />
     {{ form.message.label }} {{ form.message(size=20) }}<br />
-    <input type="submit" value="Go">
+    <input type="submit" value="Send">
 </form>
 {% endblock %}

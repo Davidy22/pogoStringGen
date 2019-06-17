@@ -3,6 +3,11 @@ h1 {
 	justify-content: center;
 }
 
+h5 {
+	display: flex;
+	justify-content: center;
+}
+
 footer {
     background-color: #748F8D;
 	font-size: 14px;
@@ -154,6 +159,7 @@ textarea {
 
 body {
     background-color:#D9EAE9;
+    overflow-x: hidden;
 }
 
 #ad {
@@ -179,6 +185,7 @@ body {
 	margin-top: 3px;
 	border-top-left-radius: 5px;
 	border-bottom-left-radius: 5px;
+	width:500px;
 }
 
 .gen-nav-button:active {
@@ -188,9 +195,4 @@ body {
 a {
 	text-decoration: none;
 	outline: 0;
-	color:black
-}
-
-a:visited {
-	color:black
 }

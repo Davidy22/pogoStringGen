@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, render_template, request
+from flask import Flask, jsonify, render_template, request, redirect
 from forms import ContactForm
 import json
 from src.parse import *
@@ -37,7 +37,10 @@ def contact():
 	form = ContactForm()
 
 	if request.method == 'POST':
-		return 'Form posted.'
+		temp = "Name: %s\nEmail: %s\nMessage: %s" % (request.form["name"], request.form["email"], request.form["message"])
+		with open("feedback.txt", "a") as f:
+			f.write(temp)
+		return redirect("/", code=302)
 
 	elif request.method == 'GET':
 		return render_template('contact.html', form=form)
