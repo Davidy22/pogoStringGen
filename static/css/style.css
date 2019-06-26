@@ -63,7 +63,7 @@ textarea {
 .button {
 	position: relative;
     background-color: #E9FAF9;
-    padding: 5px;
+    padding: 7px;
     border-spacing: 10px 10px;
     border-radius: 5px;
     border-width: 0;
@@ -72,6 +72,7 @@ textarea {
 	font-weight: normal;
 	display:inline-block;
     white-space: nowrap;
+    margin: 1px;
 }
 
 
@@ -105,6 +106,7 @@ textarea {
     height: 8em;
     border-width: 0;
 	box-shadow: 2px 2px #9BB;
+	margin: 2px;
 }
 
 .not-in-game {
