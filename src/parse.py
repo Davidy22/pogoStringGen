@@ -1,8 +1,9 @@
-from src.recursiveDescent import Parser, a, maybe, someof, skip, anyof, parser
-from itertools import groupby, count
 import re
+from itertools import count, groupby
 
-def natural_sort(l): 
+from src.recursiveDescent import Parser, a, anyof, maybe, parser, skip, someof
+
+def natural_sort(l):
 	convert = lambda text: int(text) if text.isdigit() else text.lower()
 	alphanum_key = lambda key: [ convert(c) for c in re.split('([0-9]+)', str(key)) ]
 	return sorted(l, key = alphanum_key)
@@ -72,4 +73,3 @@ def invert(string):
 		if not i in tmp:
 			out.append(i)
 	return condense(out)
-	
