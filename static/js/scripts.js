@@ -160,7 +160,6 @@ function deselectPokemon(criteria) {
 	getResult();
 };
 
-
 function selectStage(stage) {
 	$(".pokemon").each(function (){
 		if ($(this).data("stage") == stage) {
@@ -169,6 +168,16 @@ function selectStage(stage) {
 	});
 	getResult();
 };
+
+function deselectStage(stage) {
+	$(".pokemon").each(function (){
+		if ($(this).data("stage") == stage) {
+			$(this).removeClass("select")
+		}
+	});
+	getResult();
+};
+
 function selectRange(lower, upper) {
 	$(".pokemon").each(function (){
 		if ($(this).data("dex") > lower) {
