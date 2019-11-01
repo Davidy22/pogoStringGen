@@ -189,20 +189,6 @@ body {
 	border-bottom-left-radius: 5px;
 }
 
-@media screen {
-	h1 {
-		justify-content: left;
-	}
-	
-	h5 {
-		justify-content: left;
-	}
-	.controls {
-		padding-left: 1%;
-		padding-right: 65%;
-	}
-}
-
 .gen-nav-button:active {
 	background-color: #A9CAC9;
 }
