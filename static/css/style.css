@@ -189,7 +189,7 @@ body {
 	border-bottom-left-radius: 5px;
 }
 
-@media screen and (max-width: 600px) {
+@media screen {
 	h1 {
 		justify-content: left;
 	}
@@ -199,7 +199,7 @@ body {
 	}
 	.controls {
 		padding-left: 1%;
-		padding-right: 50%;
+		padding-right: 65%;
 	}
 }
 
