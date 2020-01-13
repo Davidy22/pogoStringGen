@@ -6,6 +6,7 @@ h1 {
 h5 {
 	display: flex;
 	justify-content: center;
+	margin:0;
 }
 
 footer {
