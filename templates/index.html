@@ -15,9 +15,6 @@
 	<img alt="" border="0" src="https://www.paypal.com/en_HK/i/scr/pixel.gif" width="1" height="1" />
 	</form>
 </h5>
-<h5>
-	<a href='https://play.google.com/store/apps/details?id=com.dydev.pogostring&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' height='50px' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png'/></a>
-</h5>
 {% endblock %}
 
 {% block content %}
@@ -43,12 +40,12 @@
 			Gen 4
 		</div>
 	</a>
-	<a href="#Gen5" class="not-in-game">
+	<a href="#Gen5" class="">
 		<div class="gen-nav-button">
 			Gen 5
 		</div>
 	</a>
-	<a href="#Gen6" class="not-in-game">
+	<a href="#Gen6" class="">
 		<div class="gen-nav-button">
 			Gen 6
 		</div>
@@ -123,6 +120,15 @@
 			<div class="button" onclick="deselectPokemon('.mythical')">Mythical</div>
 		</div>
 	</div>
+	<div class="control-row">
+		<div class="button-box">
+			<div class="textLabel">Show:</div>
+			<div class="button" onclick="showInGame()">In game</div>
+			<div class="button" onclick="showAll()">All</div>
+			<div class="button" onclick="showSelected()">Selected</div>
+			<div class="button" onclick="showUnselected()">Not selected</div>
+		</div>
+	</div>
 
 </div>
 
@@ -141,7 +147,7 @@
 	<div id="Gen3" class="hide gen-header list-item" data-family=129.5 data-dex=251.5>Gen 3 <a href="#"><div class="button">Return to top</div></a><div class="button" onclick="selectRange(251.5,386.5)">Select all</div><div class="button" onclick="deselectRange(251.5,386.5)">Deselect all</div></div>
 	<div id="Gen4" class="hide gen-header list-item" data-family=202.5 data-dex=386.5>Gen 4 <a href="#"><div class="button">Return to top</div></a><div class="button" onclick="selectRange(386.5,493.5)">Select all</div><div class="button" onclick="deselectRange(386.5,493.5)">Deselect all</div></div>
 	<div id="Gen5" class="hide gen-header list-item" data-family=254.5 data-dex=493.5>Gen 5 <a href="#"><div class="button">Return to top</div></a><div class="button" onclick="selectRange(493.5,649.5)">Select all</div><div class="button" onclick="deselectRange(493.5,649.5)">Deselect all</div></div>
-	<div id="Gen6" class="hide gen-header list-item not-in-game" data-family=336.5 data-dex=649.5>Gen 6 <a href="#"><div class="button">Return to top</div></a><div class="button" onclick="selectRange(649.5,721.5)">Select all</div><div class="button" onclick="deselectRange(649.5,721.5)">Deselect all</div></div>
+	<div id="Gen6" class="hide gen-header list-item" data-family=336.5 data-dex=649.5>Gen 6 <a href="#"><div class="button">Return to top</div></a><div class="button" onclick="selectRange(649.5,721.5)">Select all</div><div class="button" onclick="deselectRange(649.5,721.5)">Deselect all</div></div>
 	<div id="Gen7" class="hide gen-header list-item not-in-game" data-family=373.5 data-dex=721.5>Gen 7 <a href="#"><div class="button">Return to top</div></a><div class="button" onclick="selectRange(721.5,807.5)">Select all</div><div class="button" onclick="deselectRange(721.5,807.5)">Deselect all</div></div>
 	<div id="Gen8" class="hide gen-header list-item" data-family=427.5 data-dex=807.5>Gen 8 <a href="#"><div class="button">Return to top</div></a><div class="button" onclick="selectRange(807.5,1000.5)">Select all</div><div class="button" onclick="deselectRange(807.5,1000.5)">Deselect all</div></div>
 

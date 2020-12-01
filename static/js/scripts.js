@@ -188,6 +188,7 @@ function selectRange(lower, upper) {
 	});
 	getResult();
 };
+
 function deselectRange(lower, upper) {
 	$(".pokemon").each(function (){
 		if ($(this).data("dex") > lower) {
@@ -196,6 +197,83 @@ function deselectRange(lower, upper) {
 			}
 		}
 	});
+	getResult();
+};
+
+function showHeaders(list) {
+	temp = []
+	$(".gen-header").each(function (){
+		$(this).hide();
+		temp.push($(this).data("dex"));
+	});
+	i = 0
+	max = temp.length
+	list.forEach(function(item,index,array) {
+		if (item > temp[i]) {
+			while (item > temp[i+1]) {
+				i = i + 1;
+				if (i == max) {
+					break;
+				};
+			};
+			$("#Gen" + (i + 1)).show()
+		};
+
+	});
+};
+
+function showInGame() {
+	temp = []
+	$(".pokemon").each(function (){
+		if ($(this).hasClass("not-in-game")) {
+			$(this).hide();
+		} else {
+			temp.push($(this).data("dex"));
+			$(this).show();
+		}
+	});
+	showHeaders(temp);
+	getResult();
+};
+
+function showAll() {
+	temp = []
+	$(".pokemon").each(function (){
+		temp.push($(this).data("dex"));
+		$(this).show();
+	});
+	showHeaders(temp);
+	getResult();
+};
+
+function showSelected() {
+	temp = []
+	$(".pokemon").each(function (){
+		if ($(this).hasClass("select")) {
+			temp.push($(this).data("dex"));
+			$(this).show();
+		} else {
+			$(this).hide();
+		}
+	});
+	showHeaders(temp);
+	getResult();
+};
+
+function showUnselected() {
+	temp = []
+	$(".pokemon").each(function (){
+		if ($(this).hasClass("select")) {
+			$(this).hide();
+		} else {
+			if ($(this).hasClass("not-in-game")){
+			} else {
+				temp.push($(this).data("dex"));
+				$(this).show();
+			};
+		}
+	});
+	showHeaders(temp);
 	getResult();
 };
 
