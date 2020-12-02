@@ -137,7 +137,7 @@
 	{% for poke in pokemon %}
 	<div id="{{ poke['no'] }}" class="pokemon list-item {% for keyword in poke['keywords'] %}{{ keyword }} {% endfor %}" data-family={{ poke['family'] }} data-stage={{ poke['stage'] }} data-gen={{ poke['gen'] }} data-dex={{ poke['no'] }} onclick=select(this)>
 		<div class="pokemon-no">{{ poke['no'] }}</div>
-		<img class="pokemon-image" src="static/images/{{ poke['no'] }}.png">
+		<img class="pokemon-image" src="static/images/img_trans.gif" style="background: url(static/images/spritesheet.png) -{{ poke['spritex'] }}px -{{ poke['spritey'] }}px">
 		<div class="pokemon-label">{{ poke['name'] }}</div>
 
 	</div>

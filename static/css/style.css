@@ -10,6 +10,7 @@ h5 {
 }
 
 footer {
+	position: absolute;
     background-color: #748F8D;
 	font-size: 14px;
 	padding-top:8px;
@@ -121,8 +122,12 @@ textarea {
 .pokemon-image {
     z-index: 2;
     position: relative;
-    width: inherit;
-    padding-top: 10px;
+    width: 64px;
+	height: 64px;
+	transform: scale(1.8);
+	left: 20px;
+	top: 30px;
+	
 }
 
 .pokemon-no {
@@ -144,8 +149,8 @@ textarea {
 .pokemon-label {
     text-align: center;
     position: relative;
-	bottom: 10px;
 	font-size: 14px;
+	top: 40px;
 }
 
 .not-in-go {
