@@ -1,3 +1,4 @@
+
 from flask import Flask, jsonify, render_template, request, redirect
 from forms import ContactForm
 import json
@@ -10,8 +11,12 @@ pokemon = json.load(file)
 pokemonList = []
 for key in pokemon:
 	temp = pokemon[key]
-	temp["spritex"] = (pokemon[key]["no"] % 100 - 1) * 64
-	temp["spritey"] = int(pokemon[key]["no"] / 100) * 64
+	if (pokemon[key]["no"] % 100) == 0:
+		temp["spritex"] = 6338
+		temp["spritey"] = (int(pokemon[key]["no"] / 100) - 1) * 64
+	else:
+		temp["spritex"] = (pokemon[key]["no"] % 100 - 1) * 64
+		temp["spritey"] = int(pokemon[key]["no"] / 100) * 64
 	pokemonList.append(pokemon[key])
 
 @app.route('/_generate_string', methods = ["POST"])
