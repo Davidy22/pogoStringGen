@@ -5,6 +5,7 @@
 		<title>{% block title %}{% endblock %} - PogoString</title>
 		<link rel="stylesheet" type="text/css" href="static/css/style.css" />
 		<meta name="viewport" content="width=device-width, initial-scale=0.4, user-scalable=no"/>
+		<link href="//fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet" type="text/css">
 		<script type="text/javascript" src="{{url_for('static', filename='js/jquery-3.4.1.js') }}"></script>
 		<script type="text/javascript">
 			$SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
