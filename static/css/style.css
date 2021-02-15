@@ -189,6 +189,12 @@ body {
     top: 20px;
 }
 
+#topad {
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
 .gen-nav-button {
     background-color: #E9FAF9;
     padding: 5px;
