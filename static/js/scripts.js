@@ -134,7 +134,6 @@ function sortAZ() {
 		}
 	});
 	
-
 	$("#pokemon-list").html(result);
 	$(".gen-header").addClass("hide");
 };
@@ -208,6 +207,7 @@ function showHeaders(list) {
 	});
 	i = 0
 	max = temp.length
+	list.sort()
 	list.forEach(function(item,index,array) {
 		if (item > temp[i]) {
 			while (item > temp[i+1]) {
