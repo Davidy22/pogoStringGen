@@ -159,6 +159,21 @@ function deselectPokemon(criteria) {
 	getResult();
 };
 
+
+function selectSet(list) {
+	list.forEach(function(item,index,array) {
+		$("#" + item).addClass("select")
+	});
+	getResult();
+};
+
+function deselectSet(list) {
+	list.forEach(function(item,index,array) {
+		$("#" + item).removeClass("select")
+	});
+	getResult();
+};
+
 function selectStage(stage) {
 	$(".pokemon").each(function (){
 		if ($(this).data("stage") == stage) {
