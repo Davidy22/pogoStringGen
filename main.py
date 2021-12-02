@@ -10,13 +10,6 @@ file = open("data/dump.json")
 pokemon = json.load(file)
 pokemonList = []
 for key in pokemon:
-	temp = pokemon[key]
-	if (pokemon[key]["no"] % 100) == 0:
-		temp["spritex"] = 6338
-		temp["spritey"] = (int(pokemon[key]["no"] / 100) - 1) * 64
-	else:
-		temp["spritex"] = (pokemon[key]["no"] % 100 - 1) * 64
-		temp["spritey"] = int(pokemon[key]["no"] / 100) * 64
 	pokemonList.append(pokemon[key])
 
 @app.route('/_generate_string', methods = ["POST"])

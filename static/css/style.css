@@ -130,8 +130,8 @@ textarea {
     width: 64px;
 	height: 64px;
 	transform: scale(1.7);
-	left: 20px;
-	top: 30px;
+	left: 36px;
+	top: 47px;
 	
 }
 
@@ -148,14 +148,15 @@ textarea {
 }
 
 .select {
-	background-color:#A9CAC9;
+    background-color:#A9CAC9;
 }
 
 .pokemon-label {
     text-align: center;
-    position: relative;
-	font-size: 17px;
-	top: 40px;
+    position: absolute;
+    font-size: 17px;
+    top: 93px;
+    width: 100%;
 }
 
 .not-in-go {
