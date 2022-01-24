@@ -110,7 +110,7 @@ textarea {
     border-spacing: 10px 10px;
     border-radius: 5px;
     width: 6.6em;
-    height: 8em;
+    height: 8.3em;
     border-width: 0;
 	box-shadow: 2px 2px #9BB;
 	margin: 2px;
@@ -124,15 +124,19 @@ textarea {
 	display: none;
 }
 
+.image-frame {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .pokemon-image {
     z-index: 2;
     position: relative;
-    width: 64px;
-	height: 64px;
-	transform: scale(1.7);
-	left: 36px;
-	top: 47px;
-	
+    transform: scale(1.7);	
 }
 
 .pokemon-no {
@@ -155,7 +159,7 @@ textarea {
     text-align: center;
     position: absolute;
     font-size: 17px;
-    top: 93px;
+    top: 99px;
     width: 100%;
 }
 
