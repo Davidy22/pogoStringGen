@@ -1,6 +1,4 @@
-
 from flask import Flask, jsonify, render_template, request, redirect
-from forms import ContactForm
 import json
 from src.parse import *
 app = Flask(__name__)
@@ -31,17 +29,3 @@ def index():
 @app.route('/privacy')
 def privacy():
 	return render_template('policy.html')
-
-
-@app.route('/contact', methods=['GET', 'POST'])
-def contact():
-	form = ContactForm()
-
-	if request.method == 'POST':
-		temp = "Name: %s\nEmail: %s\nMessage: %s" % (request.form["name"], request.form["email"], request.form["message"])
-		with open("feedback.txt", "a") as f:
-			f.write(temp)
-		return redirect("/", code=302)
-
-	elif request.method == 'GET':
-		return render_template('contact.html', form=form)
