@@ -136,7 +136,7 @@ textarea {
 .pokemon-image {
     z-index: 2;
     position: relative;
-    transform: scale(1.7);	
+    transform: scale(0.95);	
 }
 
 .pokemon-no {
