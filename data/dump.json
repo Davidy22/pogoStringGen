@@ -765,7 +765,7 @@
     "764": {"name": "Comfey", "no": 764, "family": 393, "stage": 1, "gen": 7, "keywords": []},
     "765": {"name": "Oranguru", "no": 765, "family": 394, "stage": 1, "gen": 7, "keywords": []},
     "766": {"name": "Passimian", "no": 766, "family": 395, "stage": 1, "gen": 7, "keywords": ["not-in-game"]},
-    "767": {"name": "Wimpod", "no": 767, "family": 396, "stage": 1, "gen": 7, "keywords": ["can-evolve"]},
+    "767": {"name": "Wimpod", "no": 767, "family": 396, "stage": 1, "gen": 7, "keywords": ["400-candy", "can-evolve"]},
     "768": {"name": "Golisopod", "no": 768, "family": 396, "stage": 2, "gen": 7, "keywords": []},
     "769": {"name": "Sandygast", "no": 769, "family": 397, "stage": 1, "gen": 7, "keywords": ["not-in-game", "can-evolve"]},
     "770": {"name": "Palossand", "no": 770, "family": 397, "stage": 2, "gen": 7, "keywords": ["not-in-game"]},
