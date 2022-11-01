@@ -772,7 +772,7 @@
     "771": {"name": "Pyukumuku", "no": 771, "family": 398, "stage": 1, "gen": 7, "keywords": ["not-in-game"]},
     "772": {"name": "Type: Null", "no": 772, "family": 399, "stage": 1, "gen": 7, "keywords": ["not-in-game", "can-evolve", "legendary"]},
     "773": {"name": "Silvally", "no": 773, "family": 399, "stage": 2, "gen": 7, "keywords": ["not-in-game", "legendary"]},
-    "774": {"name": "Minior", "no": 774, "family": 400, "stage": 1, "gen": 7, "keywords": ["not-in-game"]},
+    "774": {"name": "Minior", "no": 774, "family": 400, "stage": 1, "gen": 7, "keywords": []},
     "775": {"name": "Komala", "no": 775, "family": 401, "stage": 1, "gen": 7, "keywords": ["not-in-game"]},
     "776": {"name": "Turtonator", "no": 776, "family": 402, "stage": 1, "gen": 7, "keywords": ["not-in-game"]},
     "777": {"name": "Togedemaru", "no": 777, "family": 403, "stage": 1, "gen": 7, "keywords": [""]},
