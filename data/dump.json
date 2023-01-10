@@ -350,7 +350,7 @@
     "349": {"name": "Feebas", "no": 349, "family": 178, "stage": 1, "gen": 3, "keywords": ["100-candy", "can-evolve", "shiny"]},
     "350": {"name": "Milotic", "no": 350, "family": 178, "stage": 2, "gen": 3, "keywords": ["shiny"]},
     "351": {"name": "Castform", "no": 351, "family": 179, "stage": 1, "gen": 3, "keywords": ["shiny"]},
-    "352": {"name": "Kecleon", "no": 352, "family": 180, "stage": 1, "gen": 3, "keywords": ["not-in-game"]},
+    "352": {"name": "Kecleon", "no": 352, "family": 180, "stage": 1, "gen": 3, "keywords": []},
     "353": {"name": "Shuppet", "no": 353, "family": 181, "stage": 1, "gen": 3, "keywords": ["50-candy", "can-evolve", "shiny"]},
     "354": {"name": "Banette", "no": 354, "family": 181, "stage": 2, "gen": 3, "keywords": ["shiny"]},
     "355": {"name": "Duskull", "no": 355, "family": 182, "stage": 1, "gen": 3, "keywords": ["25-candy", "can-evolve", "shiny"]},
