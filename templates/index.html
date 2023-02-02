@@ -144,7 +144,7 @@
 	<div id="{{ poke['no'] }}" class="pokemon list-item {% for keyword in poke['keywords'] %}{{ keyword }} {% endfor %}" data-family={{ poke['family'] }} data-stage={{ poke['stage'] }} data-gen={{ poke['gen'] }} data-dex={{ poke['no'] }} onclick=select(this)>
 		<div class="pokemon-no">{{ poke['no'] }}</div>
 		<div class="image-frame">
-			<img class="pokemon-image pokemon-image-{{ poke['no'] }}" src="static/images/img_trans.gif" style="background-image: url(static/images/spritesheet905.png)">
+			<img class="pokemon-image pokemon-image-{{ poke['no'] }}" src="static/images/img_trans.gif" style="background-image: url(static/images/spritesheet1007.png)">
 		</div>
 		<p class="pokemon-label">{{ poke['name'] }}</p>
 
@@ -158,6 +158,7 @@
 	<div id="Gen6" class="gen-header list-item" data-family=336.5 data-dex=649.5>Gen 6 <a href="#"><div class="button">Return to top</div></a><div class="button" onclick="selectRange(649.5,721.5)">Select all</div><div class="button" onclick="deselectRange(649.5,721.5)">Deselect all</div></div>
 	<div id="Gen7" class="gen-header list-item" data-family=373.5 data-dex=721.5>Gen 7 <a href="#"><div class="button">Return to top</div></a><div class="button" onclick="selectRange(721.5,807.5)">Select all</div><div class="button" onclick="deselectRange(721.5,807.5)">Deselect all</div></div>
 	<div id="Gen8" class="gen-header list-item" data-family=428.5 data-dex=809.5>Gen 8 <a href="#"><div class="button">Return to top</div></a><div class="button" onclick="selectRange(807.5,1000.5)">Select all</div><div class="button" onclick="deselectRange(807.5,1000.5)">Deselect all</div></div>
+	<div id="Gen8" class="gen-header list-item" data-family=476.5 data-dex=905.5>Gen 9 <a href="#"><div class="button">Return to top</div></a><div class="button" onclick="selectRange(807.5,1000.5)">Select all</div><div class="button" onclick="deselectRange(807.5,1000.5)">Deselect all</div></div>
 
 </div>
 {% endblock %}
