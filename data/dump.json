@@ -775,9 +775,9 @@
     "774": {"name": "Minior", "no": 774, "family": 400, "stage": 1, "gen": 7, "keywords": []},
     "775": {"name": "Komala", "no": 775, "family": 401, "stage": 1, "gen": 7, "keywords": ["not-in-game"]},
     "776": {"name": "Turtonator", "no": 776, "family": 402, "stage": 1, "gen": 7, "keywords": ["not-in-game"]},
-    "777": {"name": "Togedemaru", "no": 777, "family": 403, "stage": 1, "gen": 7, "keywords": [""]},
+    "777": {"name": "Togedemaru", "no": 777, "family": 403, "stage": 1, "gen": 7, "keywords": []},
     "778": {"name": "Mimikyu", "no": 778, "family": 404, "stage": 1, "gen": 7, "keywords": ["not-in-game"]},
-    "779": {"name": "Bruxish", "no": 779, "family": 405, "stage": 1, "gen": 7, "keywords": ["not-in-game"]},
+    "779": {"name": "Bruxish", "no": 779, "family": 405, "stage": 1, "gen": 7, "keywords": []},
     "780": {"name": "Drampa", "no": 780, "family": 406, "stage": 1, "gen": 7, "keywords": ["not-in-game"]},
     "781": {"name": "Dhelmise", "no": 781, "family": 407, "stage": 1, "gen": 7, "keywords": ["not-in-game"]},
     "782": {"name": "Jangmo-o", "no": 782, "family": 408, "stage": 1, "gen": 7, "keywords": ["can-evolve"]},
@@ -892,8 +892,8 @@
     "891": {"name": "Kubfu", "no": 891, "family": 469, "stage": 1, "gen": 8, "keywords": ["not-in-game", "can-evolve", "legendary"]},
     "892": {"name": "Urshifu", "no": 892, "family": 469, "stage": 2, "gen": 8, "keywords": ["not-in-game", "legendary"]},
     "893": {"name": "Zarude", "no": 893, "family": 470, "stage": 1, "gen": 8, "keywords": ["not-in-game", "mythical"]},
-    "894": {"name": "Regieleki", "no": 894, "family": 471, "stage": 1, "gen": 8, "keywords": ["not-in-game", "legendary"]},
-    "895": {"name": "Regidrago", "no": 895, "family": 472, "stage": 1, "gen": 8, "keywords": ["not-in-game", "legendary"]},
+    "894": {"name": "Regieleki", "no": 894, "family": 471, "stage": 1, "gen": 8, "keywords": ["legendary"]},
+    "895": {"name": "Regidrago", "no": 895, "family": 472, "stage": 1, "gen": 8, "keywords": ["legendary"]},
     "896": {"name": "Glastrier", "no": 896, "family": 473, "stage": 1, "gen": 8, "keywords": ["not-in-game", "legendary"]},
     "897": {"name": "Spectrier", "no": 897, "family": 474, "stage": 1, "gen": 8, "keywords": ["not-in-game", "legendary"]},
     "898": {"name": "Calyrex", "no": 898, "family": 475, "stage": 1, "gen": 8, "keywords": ["not-in-game", "legendary"]},
@@ -1006,5 +1006,7 @@
     "1005": {"name": "Roaring Moon", "no": 1005, "family": 532, "stage": 1, "gen": 9, "keywords": ["not-in-game"]},
     "1006": {"name": "Iron Valiant", "no": 1006, "family": 533, "stage": 1, "gen": 9, "keywords": ["not-in-game"]},
     "1007": {"name": "Koraidon", "no": 1007, "family": 534, "stage": 1, "gen": 9, "keywords": ["not-in-game", "legendary"]},
-    "1008": {"name": "Miraidon", "no": 1008, "family": 535, "stage": 1, "gen": 9, "keywords": ["not-in-game", "legendary"]}
+    "1008": {"name": "Miraidon", "no": 1008, "family": 535, "stage": 1, "gen": 9, "keywords": ["not-in-game", "legendary"]},
+    "1007": {"name": "Walking Wake", "no": 1009, "family": 536, "stage": 1, "gen": 9, "keywords": ["not-in-game", "legendary"]},
+    "1008": {"name": "Iron Leaves", "no": 1010, "family": 537, "stage": 1, "gen": 9, "keywords": ["not-in-game", "legendary"]}
 }
