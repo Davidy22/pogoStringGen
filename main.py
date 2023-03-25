@@ -6,9 +6,7 @@ app.secret_key = 'JSA(#@msd9fASJM#@-dsf-214a'
 
 file = open("data/dump.json")
 pokemon = json.load(file)
-pokemonList = []
-for key in pokemon:
-	pokemonList.append(pokemon[key])
+pokemonList = list(pokemon.values())
 
 @app.route('/_generate_string', methods = ["POST"])
 def generate_string():
