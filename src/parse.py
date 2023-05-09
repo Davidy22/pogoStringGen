@@ -31,6 +31,11 @@ def to_list(parse_tree):
 
 def parse(string):
 	try:
+		string = string.strip()
+		if string[0] == "-":
+			string = "1" + string
+		if string[-1] == "-":
+			string += "5000" # Update if dex numbers go over 5000
 		tokens= (("[:;,]", "or"),("[^:;,&]+", "dex"), ("&", "and"))
 		gram = {
 			"EXPR": a(
