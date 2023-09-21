@@ -1008,5 +1008,12 @@
     "1007": {"name": "Koraidon", "no": 1007, "family": 534, "stage": 1, "gen": 9, "keywords": ["not-in-game", "legendary"]},
     "1008": {"name": "Miraidon", "no": 1008, "family": 535, "stage": 1, "gen": 9, "keywords": ["not-in-game", "legendary"]},
     "1009": {"name": "Walking Wake", "no": 1009, "family": 536, "stage": 1, "gen": 9, "keywords": ["not-in-game", "legendary"]},
-    "1010": {"name": "Iron Leaves", "no": 1010, "family": 537, "stage": 1, "gen": 9, "keywords": ["not-in-game", "legendary"]}
+    "1010": {"name": "Iron Leaves", "no": 1010, "family": 537, "stage": 1, "gen": 9, "keywords": ["not-in-game", "legendary"]},
+    "1011": {"name": "Dipplin", "no": 1011, "family": 441, "stage": 2, "gen": 9, "keywords": ["not-in-game"]},
+    "1012": {"name": "Poltchageist", "no": 1012, "family": 538, "stage": 1, "gen": 9, "keywords": ["not-in-game", "can-evolve"]},
+    "1013": {"name": "Sinistcha", "no": 1013, "family": 538, "stage": 2, "gen": 9, "keywords": ["not-in-game"]},
+    "1014": {"name": "Okidogi", "no": 1014, "family": 539, "stage": 1, "gen": 9, "keywords": ["not-in-game", "legendary"]},
+    "1015": {"name": "Munkidori", "no": 1015, "family": 540, "stage": 1, "gen": 9, "keywords": ["not-in-game", "legendary"]},
+    "1016": {"name": "Fezandipiti", "no": 1016, "family": 541, "stage": 1, "gen": 9, "keywords": ["not-in-game", "legendary"]},
+    "1017": {"name": "Ogerpon", "no": 1017, "family": 542, "stage": 1, "gen": 9, "keywords": ["not-in-game", "legendary"]}
 }
