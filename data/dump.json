@@ -969,8 +969,8 @@
     "968": {"name": "Orthworm", "no": 968, "family": 506, "stage": 1, "gen": 9, "keywords": ["not-in-game"]},
     "969": {"name": "Glimmet", "no": 969, "family": 507, "stage": 1, "gen": 9, "keywords": ["not-in-game", "can-evolve"]},
     "970": {"name": "Glimmora", "no": 970, "family": 507, "stage": 2, "gen": 9, "keywords": ["not-in-game"]},
-    "971": {"name": "Greavard", "no": 971, "family": 508, "stage": 1, "gen": 9, "keywords": ["not-in-game", "can-evolve"]},
-    "972": {"name": "Houndstone", "no": 972, "family": 508, "stage": 2, "gen": 9, "keywords": ["not-in-game"]},
+    "971": {"name": "Greavard", "no": 971, "family": 508, "stage": 1, "gen": 9, "keywords": ["can-evolve"]},
+    "972": {"name": "Houndstone", "no": 972, "family": 508, "stage": 2, "gen": 9, "keywords": []},
     "973": {"name": "Flamigo", "no": 973, "family": 509, "stage": 1, "gen": 9, "keywords": ["not-in-game"]},
     "974": {"name": "Cetoddle", "no": 974, "family": 510, "stage": 1, "gen": 9, "keywords": ["not-in-game", "can-evolve"]},
     "975": {"name": "Cetitan", "no": 975, "family": 510, "stage": 2, "gen": 9, "keywords": ["not-in-game"]},
@@ -1015,5 +1015,7 @@
     "1014": {"name": "Okidogi", "no": 1014, "family": 539, "stage": 1, "gen": 9, "keywords": ["not-in-game", "legendary"]},
     "1015": {"name": "Munkidori", "no": 1015, "family": 540, "stage": 1, "gen": 9, "keywords": ["not-in-game", "legendary"]},
     "1016": {"name": "Fezandipiti", "no": 1016, "family": 541, "stage": 1, "gen": 9, "keywords": ["not-in-game", "legendary"]},
-    "1017": {"name": "Ogerpon", "no": 1017, "family": 542, "stage": 1, "gen": 9, "keywords": ["not-in-game", "legendary"]}
+    "1017": {"name": "Ogerpon", "no": 1017, "family": 542, "stage": 1, "gen": 9, "keywords": ["not-in-game", "legendary"]},
+    "1018": {"name": "Raging Bolt", "no": 1018, "family": 543, "stage": 1, "gen": 9, "keywords": ["not-in-game", "legendary"]},
+    "1019": {"name": "Iron Crown", "no": 1019, "family": 544, "stage": 1, "gen": 9, "keywords": ["not-in-game", "legendary"]}
 }
