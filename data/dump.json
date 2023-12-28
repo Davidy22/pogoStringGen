@@ -863,7 +863,7 @@
     "862": {"name": "Obstagoon", "no": 862, "family": 134, "stage": 3, "gen": 8, "keywords": []},
     "863": {"name": "Perrserker", "no": 863, "family": 22, "stage": 2, "gen": 8, "keywords": []},
     "864": {"name": "Cursola", "no": 864, "family": 113, "stage": 2, "gen": 8, "keywords": ["not-in-game"]},
-    "865": {"name": "Sirfetch"d", "no": 865, "family": 35, "stage": 2, "gen": 8, "keywords": []},
+    "865": {"name": "Sirfetch'd", "no": 865, "family": 35, "stage": 2, "gen": 8, "keywords": []},
     "866": {"name": "Mr. Rime", "no": 866, "family": 57, "stage": 2, "gen": 8, "keywords": []},
     "867": {"name": "Runerigus", "no": 867, "family": 287, "stage": 2, "gen": 8, "keywords": []},
     "868": {"name": "Milcery", "no": 868, "family": 451, "stage": 1, "gen": 8, "keywords": ["not-in-game", "can-evolve", "50-candy"]},
@@ -1023,5 +1023,5 @@
     "1022": {"name": "Iron Boulder", "no": 1022, "family": 545, "stage": 1, "gen": 9, "keywords": ["not-in-game", "legendary"]},
     "1023": {"name": "Iron Crown", "no": 1023, "family": 546, "stage": 1, "gen": 9, "keywords": ["not-in-game", "legendary"]},
     "1024": {"name": "Terapagos", "no": 1024, "family": 547, "stage": 1, "gen": 9, "keywords": ["not-in-game", "legendary"]},
-    "1025": {"name": "Pecharunt", "no": 1025, "family": 548, "stage": 1, "gen": 9, "keywords": ["not-in-game", "mythical"]},
+    "1025": {"name": "Pecharunt", "no": 1025, "family": 548, "stage": 1, "gen": 9, "keywords": ["not-in-game", "mythical"]}
 }
