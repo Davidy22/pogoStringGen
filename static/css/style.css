@@ -95,6 +95,10 @@ textarea {
 	grid-gap: 4px;
 }
 
+.button-box-highlight {
+	background: #AACDFD;
+}
+
 .gen-header {
 	width: 100%;
     padding-left: 50px;
