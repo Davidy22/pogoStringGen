@@ -85,6 +85,16 @@ function getResult() {
 	});
 };
 
+function hideHeaders() {
+	$(".gen-header").hide();
+	$("#gen-nav").hide();
+};
+
+function showHeaders() {
+	$(".gen-header").show();
+	$("#gen-nav").show();
+};
+
 function sortFamily() {
 	result = $('div.list-item').sort(function(a,b) {
 		if ($(a).data('family') == $(b).data('family')) {
@@ -104,8 +114,7 @@ function sortFamily() {
 	})
 
 	$("#pokemon-list").html(result);
-	$(".gen-header").show();
-	$("#gen-nav").show();
+	showHeaders();
 };
 
 function sortDex() {
@@ -120,8 +129,7 @@ function sortDex() {
 	});
 
 	$("#pokemon-list").html(result);
-	$(".gen-header").show();
-	$("#gen-nav").show();
+	showHeaders();
 };
 
 function sortAZ() {
@@ -137,8 +145,7 @@ function sortAZ() {
 	});
 	
 	$("#pokemon-list").html(result);
-	$(".gen-header").hide();
-	$("#gen-nav").hide();
+	hideHeaders();
 };
 
 function sortZA() {
@@ -148,8 +155,7 @@ function sortZA() {
 	
 
 	$("#pokemon-list").html(result);
-	$(".gen-header").hide();
-	$("#gen-nav").hide();
+	hideHeaders();
 };
 
 function selectPokemon(criteria) {
@@ -254,6 +260,7 @@ function showHeaders(list) {
 };
 
 function showInGame() {
+	showHeaders();
 	$(".pokemon").each(function (){
 		if ($(this).hasClass("not-in-game")) {
 			$(this).hide();
@@ -265,6 +272,7 @@ function showInGame() {
 };
 
 function showAll() {
+	showHeaders();
 	$(".pokemon").each(function (){
 		$(this).show();
 	});
@@ -272,6 +280,7 @@ function showAll() {
 };
 
 function showSelected() {
+	hideHeaders();
 	$(".pokemon").each(function (){
 		if ($(this).hasClass("select")) {
 			$(this).show();
@@ -283,6 +292,7 @@ function showSelected() {
 };
 
 function showUnselected() {
+	hideHeaders();
 	$(".pokemon").each(function (){
 		if ($(this).hasClass("select")) {
 			$(this).hide();
