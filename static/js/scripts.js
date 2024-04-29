@@ -227,29 +227,6 @@ function selectNew(lower, upper) {
 	getResult();
 };
 
-function showHeaders(list) {
-	temp = []
-	$(".gen-header").each(function (){
-		$(this).hide();
-		temp.push($(this).data("dex"));
-	});
-	i = 0
-	max = temp.length
-	list.sort()
-	list.forEach(function(item,index,array) {
-		if (item > temp[i]) {
-			while (item > temp[i+1]) {
-				i = i + 1;
-				if (i == max) {
-					break;
-				};
-			};
-			$("#Gen" + (i + 1)).show()
-		};
-
-	});
-};
-
 function showInGame() {
 	showHeaders();
 	$(".pokemon").each(function (){
