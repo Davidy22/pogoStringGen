@@ -217,6 +217,19 @@ function deselectRange(lower, upper) {
 	getResult();
 };
 
+function selectNew(lower, upper) {
+	var arrayOfIds = $.map($(".select"), function(n, i){
+		return n.id;
+	});
+	
+	$(".pokemon").each(function (){
+		if ($(this).data("dex") > Math.max(...arrayOfIds)) {
+			$(this).addClass("select")
+		}
+	});
+	getResult();
+};
+
 function showHeaders(list) {
 	temp = []
 	$(".gen-header").each(function (){
