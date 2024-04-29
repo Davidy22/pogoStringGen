@@ -15,21 +15,49 @@ h5 {
 }
 
 footer {
-	position: absolute;
+    position: absolute;
     background-color: #748F8D;
-	font-size: 14px;
-	padding-top:8px;
-	float: left;
-	width: 106%;
-	margin-left: -3%;
-	text-align: center;
-	margin-top: 30px;
+    font-size: 14px;
+    padding-top:8px;
+    float: left;
+    width: 106%;
+    margin-left: -3%;
+    text-align: center;
+    margin-top: 30px;
 }
 
 textarea {
 	width: 350px;
 	height:60px;
 	resize:none;
+}
+
+.collapsible {
+    position: relative;
+    background-color: #A9BAB9;
+    padding: 7px;
+    border-spacing: 10px 10px;
+    border-radius: 5px;
+    border-width: 0;
+    box-shadow: 2px 2px #9BB;
+    font-size: 16px;
+    font-weight: normal;
+    display:inline-block;
+    white-space: nowrap;
+    margin: 1px;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active, .collapsible:hover {
+  background-color: #ccc;
+}
+
+.collapsible-content {
+  padding: 0 18px;
+  background-color: #E2F6F2;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
 }
 
 #controls {
@@ -54,12 +82,12 @@ textarea {
 }
 
 .control-row {
-	display: flex;
+    display: flex;
     grid-column-gap: 3px;
 }
 
 .textLabel {
-	position: relative;
+    position: relative;
     background-color: #C9DAD9;
     padding: 5px;
     border-spacing: 10px 10px;
@@ -68,16 +96,16 @@ textarea {
 }
 
 .button {
-	position: relative;
+    position: relative;
     background-color: #E9FAF9;
     padding: 7px;
     border-spacing: 10px 10px;
     border-radius: 5px;
     border-width: 0;
-	box-shadow: 2px 2px #9BB;
-	font-size: 16px;
-	font-weight: normal;
-	display:inline-block;
+    box-shadow: 2px 2px #9BB;
+    font-size: 16px;
+    font-weight: normal;
+    display:inline-block;
     white-space: nowrap;
     margin: 1px;
 }

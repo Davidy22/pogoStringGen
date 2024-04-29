@@ -12,6 +12,9 @@
 
 {% block content %}
 <script type="text/javascript" src="{{url_for('static', filename='js/scripts.js') }}"></script>
+<script type="text/javascript">
+	window.onload = loadProcess;
+</script>
 <!--
 <div id="topad">
 	<script data-cfasync='false' type='text/javascript' src='//p354211.clksite.com/adServe/banners?tid=354211_693092_4'></script>
@@ -66,6 +69,7 @@
 	</a>
 </div>
 
+
 <div id="controls">
 	<div class="control-row">
 		<textarea id="importBox"> </textarea>
@@ -79,63 +83,65 @@
 		<textarea id="result" readonly> </textarea>
 		<div class="button" onclick="copy()">Copy string</div>
 	</div>
-	<div class="control-row">
-		<div class="button-box">
-			<div class="textLabel">Sort options:</div>
-			<div class="button" onclick="sortDex()">Dex number</div>
-			<div class="button" onclick="sortFamily()">Family</div>
-			<div class="button" onclick="sortAZ()">A-Z</div>
-			<div class="button" onclick="sortZA()">Z-A</div>
+	<button type="button" class="collapsible">Advanced options</button>
+	<div class="collapsible-content">
+		<div class="control-row">
+			<div class="button-box">
+				<div class="textLabel">Sort options:</div>
+				<div class="button" onclick="sortDex()">Dex number</div>
+				<div class="button" onclick="sortFamily()">Family</div>
+				<div class="button" onclick="sortAZ()">A-Z</div>
+				<div class="button" onclick="sortZA()">Z-A</div>
+			</div>
+		</div>
+		<div class="control-row">
+			<div class="textLabel">Quick select:</div>
+			<div class="button-box">
+				<div class="button" onclick="selectPokemon('.pokemon')">All</div>
+				<div class="button" onclick="selectStage(1)">Stage one</div>
+				<div class="button" onclick="selectStage(2)">Stage two</div>
+				<div class="button" onclick="selectStage(3)">Stage three</div>
+				<div class="button" onclick="selectPokemon('.baby')">Baby</div>
+				<div class="button" onclick="selectPokemon('.can-evolve')">Can evolve</div>
+				<div class="button" onclick="selectPokemon('.12-candy')">12 candy</div>
+				<div class="button" onclick="selectPokemon('.25-candy')">25 candy</div>
+				<div class="button" onclick="selectPokemon('.50-candy')">50 candy</div>
+				<div class="button" onclick="selectPokemon('.100-candy')">100 candy</div>
+				<div class="button" onclick="selectPokemon('.200-candy')">200 candy</div>
+				<div class="button" onclick="selectPokemon('.400-candy')">400 candy</div>
+				<div class="button" onclick="selectPokemon('.legendary')">Legendary</div>
+				<div class="button" onclick="selectPokemon('.mythical')">Mythical</div>
+			</div>
+		</div>
+		<div class="control-row">
+			<div class="textLabel">Quick deselect:</div>
+			<div class="button-box">
+				<div class="button" onclick="deselectPokemon('.pokemon')">All</div>
+				<div class="button" onclick="deselectStage(1)">Stage one</div>
+				<div class="button" onclick="deselectStage(2)">Stage two</div>
+				<div class="button" onclick="deselectStage(3)">Stage three</div>
+				<div class="button" onclick="deselectPokemon('.baby')">Baby</div>
+				<div class="button" onclick="deselectPokemon('.can-evolve')">Can evolve</div>
+				<div class="button" onclick="deselectPokemon('.12-candy')">12 candy</div>
+				<div class="button" onclick="deselectPokemon('.25-candy')">25 candy</div>
+				<div class="button" onclick="deselectPokemon('.50-candy')">50 candy</div>
+				<div class="button" onclick="deselectPokemon('.100-candy')">100 candy</div>
+				<div class="button" onclick="deselectPokemon('.200-candy')">200 candy</div>
+				<div class="button" onclick="deselectPokemon('.400-candy')">400 candy</div>
+				<div class="button" onclick="deselectPokemon('.legendary')">Legendary</div>
+				<div class="button" onclick="deselectPokemon('.mythical')">Mythical</div>
+			</div>
+		</div>
+		<div class="control-row">
+			<div class="button-box button-box-highlight">
+				<div class="textLabel">Show:</div>
+				<div class="button" onclick="showInGame()">In game</div>
+				<div class="button" onclick="showAll()">All</div>
+				<div class="button" onclick="showSelected()">Selected</div>
+				<div class="button" onclick="showUnselected()">Not selected</div>
+			</div>
 		</div>
 	</div>
-	<div class="control-row">
-		<div class="textLabel">Quick select:</div>
-		<div class="button-box">
-			<div class="button" onclick="selectPokemon('.pokemon')">All</div>
-			<div class="button" onclick="selectStage(1)">Stage one</div>
-			<div class="button" onclick="selectStage(2)">Stage two</div>
-			<div class="button" onclick="selectStage(3)">Stage three</div>
-			<div class="button" onclick="selectPokemon('.baby')">Baby</div>
-			<div class="button" onclick="selectPokemon('.can-evolve')">Can evolve</div>
-			<div class="button" onclick="selectPokemon('.12-candy')">12 candy</div>
-			<div class="button" onclick="selectPokemon('.25-candy')">25 candy</div>
-			<div class="button" onclick="selectPokemon('.50-candy')">50 candy</div>
-			<div class="button" onclick="selectPokemon('.100-candy')">100 candy</div>
-			<div class="button" onclick="selectPokemon('.200-candy')">200 candy</div>
-			<div class="button" onclick="selectPokemon('.400-candy')">400 candy</div>
-			<div class="button" onclick="selectPokemon('.legendary')">Legendary</div>
-			<div class="button" onclick="selectPokemon('.mythical')">Mythical</div>
-		</div>
-	</div>
-	<div class="control-row">
-		<div class="textLabel">Quick deselect:</div>
-		<div class="button-box">
-			<div class="button" onclick="deselectPokemon('.pokemon')">All</div>
-			<div class="button" onclick="deselectStage(1)">Stage one</div>
-			<div class="button" onclick="deselectStage(2)">Stage two</div>
-			<div class="button" onclick="deselectStage(3)">Stage three</div>
-			<div class="button" onclick="deselectPokemon('.baby')">Baby</div>
-			<div class="button" onclick="deselectPokemon('.can-evolve')">Can evolve</div>
-			<div class="button" onclick="deselectPokemon('.12-candy')">12 candy</div>
-			<div class="button" onclick="deselectPokemon('.25-candy')">25 candy</div>
-			<div class="button" onclick="deselectPokemon('.50-candy')">50 candy</div>
-			<div class="button" onclick="deselectPokemon('.100-candy')">100 candy</div>
-			<div class="button" onclick="deselectPokemon('.200-candy')">200 candy</div>
-			<div class="button" onclick="deselectPokemon('.400-candy')">400 candy</div>
-			<div class="button" onclick="deselectPokemon('.legendary')">Legendary</div>
-			<div class="button" onclick="deselectPokemon('.mythical')">Mythical</div>
-		</div>
-	</div>
-	<div class="control-row">
-		<div class="button-box button-box-highlight">
-			<div class="textLabel">Show:</div>
-			<div class="button" onclick="showInGame()">In game</div>
-			<div class="button" onclick="showAll()">All</div>
-			<div class="button" onclick="showSelected()">Selected</div>
-			<div class="button" onclick="showUnselected()">Not selected</div>
-		</div>
-	</div>
-
 </div>
 
 
