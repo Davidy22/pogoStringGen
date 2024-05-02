@@ -2,7 +2,9 @@ from flask import Flask, jsonify, render_template, request, redirect
 import json
 from src.parse import *
 app = Flask(__name__)
-app.secret_key = 'JSA(#@msd9fASJM#@-dsf-214a'
+app.config.from_pyfile('config.py', silent=True)
+app.secret_key = app.config["secret_key"]
+
 
 file = open("data/dump.json")
 pokemon = json.load(file)
