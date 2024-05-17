@@ -1,14 +1,11 @@
 from flask import Flask, jsonify, render_template, request, redirect
-from flask_caching import Cache
 import json
 import requests
 from src.parse import *
 from src.auth import *
 from src.db import *
 
-cache = Cache(config={"CACHE_TYPE": "SimpleCache"})
 app = Flask(__name__)
-cache.init_app(app)
 app.config.from_pyfile("config.py", silent=True)
 # app.secret_key = app.config["secret_key"]
 
@@ -33,13 +30,11 @@ def import_string():
 
 
 @app.route("/", methods=["GET"])
-@cache.cached()
 def index():
     return render_template("index.html", pokemon=pokemonList)
 
 
 @app.route("/privacy", methods=["GET"])
-@cache.cached()
 def privacy():
     return render_template("policy.html")
 
