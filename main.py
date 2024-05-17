@@ -1,6 +1,6 @@
 from flask import Flask, jsonify, render_template, request, redirect
 import json
-import requests
+import urllib
 from src.parse import *
 from src.auth import *
 from src.db import *
@@ -43,17 +43,16 @@ def privacy():
 def login():
     state = request.args.get("state")
     access_token = request.args.get("access_token")
-    print(state, access_token)
-    user = requests.get(
+    
+    user = urllib.request.urlopen(
         url="https://www.googleapis.com/oauth2/v3/userinfo",
-        params={"access_token": access_token},
-    ).json()
-    print(user)
+        data=urllib.parse.urlencode({"access_token": access_token}).encode("ascii"),
+    ).read()
+    user = json.loads(user)
     uid = user["sub"]
 
     data = get_info(uid)
     if data is None:
-        print(user)
         if user["email_verified"]:
             email = user["email"]
             picture = user["picture"]
@@ -68,7 +67,6 @@ def login():
             # Static page telling people they need to verify their email to make an account
             return render_template("verify_email.html")
     else:
-        print(data)
         file = open(f"pastes/{data['textloc']}.json", "r")
         f = json.load(file)
         sid = add_session(uid)
