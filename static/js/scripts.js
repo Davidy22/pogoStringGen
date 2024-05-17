@@ -284,8 +284,8 @@ function oauthSignIn() {
 
 	// Parameters to pass to OAuth 2.0 endpoint.
 	var params = {'client_id': '104518098376-bdl3un0uqe5fg2b629fvpsb13ipo9edg.apps.googleusercontent.com',
-				//'redirect_uri': window.location.hostname + "/login",
-				'redirect_uri': "https://tolocalhost.com/login",
+				'redirect_uri': "https://pogostring.com/login",
+				//'redirect_uri': "https://tolocalhost.com/login",
 				'response_type': 'token',
 				'scope': 'openid',
 				'include_granted_scopes': 'true',
