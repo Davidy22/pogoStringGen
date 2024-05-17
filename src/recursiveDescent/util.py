@@ -3,17 +3,14 @@ from .parser import Token, Node
 
 
 def to_dot(ast):
-    result = [
-        'strict digraph "AST" {',
-        'size="16,14"; ratio = fill;'
-    ]
-    _escape = lambda s: s.replace('"', r'\"')
-    
+    result = ['strict digraph "AST" {', 'size="16,14"; ratio = fill;']
+    _escape = lambda s: s.replace('"', r"\"")
+
     def format_node(node, uid):
         if isinstance(node, Token):
-            label = '{} [{}]'.format(*map(_escape, (node.name, node.value)))
+            label = "{} [{}]".format(*map(_escape, (node.name, node.value)))
         elif isinstance(node, Node):
-            label = '{}'.format(*map(_escape, (node.name,)))
+            label = "{}".format(*map(_escape, (node.name,)))
         else:
             raise ValueError("Can't format node {}".format(node))
         return '"{}" [label="{}"];'.format(uid, label)
@@ -28,5 +25,5 @@ def to_dot(ast):
 
     uid = uuid.uuid4().hex
     walk(ast, uid)
-    result.append('}')
-    return '\n'.join(result)
+    result.append("}")
+    return "\n".join(result)

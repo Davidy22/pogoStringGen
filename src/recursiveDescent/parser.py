@@ -2,8 +2,8 @@ import re
 from collections import namedtuple
 
 
-Token = namedtuple('Token', ('name', 'value'))
-Node = namedtuple('Node', ('name', 'items'))
+Token = namedtuple("Token", ("name", "value"))
+Node = namedtuple("Node", ("name", "items"))
 
 
 class Lexer(object):
@@ -11,13 +11,13 @@ class Lexer(object):
     A tokenizer that takes a string and produces a sequence of
     `Token` instances. If no match found a SyntaxError is raised.
     """
+
     def __init__(self, patterns):
         """
         :param patterns: A sequence of (regex_pattern, token_name) tuples.
          Patterns are order dependent: first match wins
         """
-        self.patterns = [
-            (re.compile(bytes(p, 'utf8')), name) for p, name in patterns]
+        self.patterns = [(re.compile(bytes(p, "utf8")), name) for p, name in patterns]
 
     def lex(self, raw, ignore_spaces=True):
         """
@@ -25,24 +25,24 @@ class Lexer(object):
         :param ignore_spaces: if True, all whitespace characters are skipped
         :return: generator of tokens
         """
-        self.raw = bytearray(raw, 'utf8')
+        self.raw = bytearray(raw, "utf8")
         self.pos = 0
         endpos = len(self.raw)
 
         while self.pos != endpos:
-            if ignore_spaces and self.raw[self.pos: self.pos + 1].isspace():
+            if ignore_spaces and self.raw[self.pos : self.pos + 1].isspace():
                 self.pos += 1
                 continue
             for p, name in self.patterns:
-                m = p.match(self.raw[self.pos:])
+                m = p.match(self.raw[self.pos :])
                 if m is not None:
                     val, offset = m.group(), m.end()
-                    yield Token(name, str(val, 'utf8'))
+                    yield Token(name, str(val, "utf8"))
                     self.pos += offset
                     break
             else:
-                self.error('Illegal character')
-        yield Token('EOF', None)
+                self.error("Illegal character")
+        yield Token("EOF", None)
 
     def error(self, message):
         raise SyntaxError(message, self.get_debug_info())
@@ -50,10 +50,10 @@ class Lexer(object):
     def get_debug_info(self, f_name=None):
         pos = self.pos + 1
         raw = self.raw
-        line_no = raw[:pos].count(b'\n')
-        line_start = max(raw.rfind(b'\n'), 0)
-        line_end = max(raw.find(b'\n'), len(raw))
-        line = str(raw[line_start:line_end], 'utf-8')
+        line_no = raw[:pos].count(b"\n")
+        line_start = max(raw.rfind(b"\n"), 0)
+        line_end = max(raw.find(b"\n"), len(raw))
+        line = str(raw[line_start:line_end], "utf-8")
         offset = pos - line_start
         return (f_name, line_no, offset, line)
 
@@ -71,9 +71,9 @@ class Parser(object):
 
     def error(self):
         if self.cur_token.value is not None:
-            message = 'Unexpected token {}'.format(self.cur_token.value)
+            message = "Unexpected token {}".format(self.cur_token.value)
         else:
-            message = 'Unexpected EOF'
+            message = "Unexpected EOF"
         self.lexer.error(message)
 
     def eat(self, token_name):
@@ -92,7 +92,7 @@ class Parser(object):
         try:
             result = self.parse_rule(rule)
             if check_eof:
-                a('EOF')(self)
+                a("EOF")(self)
         except ParserError:
             self.error()
         else:
@@ -114,6 +114,7 @@ def just(token_name):
         if token is None:
             raise ParserError
         return token
+
     return inner
 
 
@@ -125,12 +126,14 @@ def maybe(*args):
         except ParserError:
             if parser.count != cnt:
                 raise ParserError
+
     return inner
 
 
 def skip(*args):
     def inner(parser):
         unify(*args)(parser)
+
     return inner
 
 
@@ -141,6 +144,7 @@ def anyof(*args):
             if result:
                 return result
         raise ParserError
+
     return inner
 
 
@@ -154,6 +158,7 @@ def someof(*args):
             else:
                 break
         return result
+
     return inner
 
 
@@ -173,4 +178,5 @@ def a(*args):
                 else:
                     result.extend(arg)
         return result
+
     return inner
