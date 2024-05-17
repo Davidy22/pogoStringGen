@@ -1,0 +1,26 @@
+{% extends 'template.html' %}
+
+{% block title %}Create Account{% endblock %}
+
+{% block header %}<h2>Set your account information</h2>{% endblock %}
+
+{% block content %}
+<script type="text/javascript" src="{{url_for('static', filename='js/newaccount.js') }}"></script>
+
+<div class="menu">
+    <a href="/">
+        🏘️Home
+    </a>
+</div>
+
+<p>Information auto-filled from Google user account information.</p>
+<label for="uname">Choose your username. This will determine the URL of your paste (pogostring/u/[username]):</label>
+<input type="text" id="uname" name="uname" value="{{ username }}" oninput="updateURL()"></ br>
+<a>The URL of your paste will be: <div id="paste-url"></div></a>
+<img id="profile-pic" src="{{ picture }}" class="hide">
+<a id="status-message"></a>
+<div class="button" onclick="createAccount()">Create account</div>
+
+<div id="state" class="hide">{{ state }}</div>
+<div id="uid"  class="hide">{{ uid }}</div>
+{% endblock %}

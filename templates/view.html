@@ -1,0 +1,34 @@
+{% extends 'template.html' %}
+
+{% block title %}Viewing {{username}}'s Paste{% endblock %}
+
+{% block header %}<h1>{{username}}'s Paste</h1>{% endblock %}
+
+{% block content %}
+
+<script type="text/javascript" src="{{url_for('static', filename='js/view.js') }}"></script>
+
+<div class="menu">
+    <a href="/">
+        🏘️Home
+    </a>
+</div>
+
+<button type="button" class="collapsible" style="width:100%">Hide</button>
+<div class="collapsible-content">
+    <p style="white-space: preserve">{{ text }}</p>
+</div>
+
+<div id="pokemon-list">
+	{% for poke in pokemon %}
+	<div id="{{ poke['no'] }}" class="pokemon list-item {% for keyword in poke['keywords'] %}{{ keyword }} {% endfor %}" data-family={{ poke['family'] }} data-stage={{ poke['stage'] }} data-gen={{ poke['gen'] }} data-dex={{ poke['no'] }} onclick=select(this)>
+		<div class="pokemon-no">{{ poke['no'] }}</div>
+		<div class="image-frame">
+			<img class="pokemon-image pokemon-image-{{ poke['no'] }}" src="/static/images/img_trans.gif" style="background-image: url(/static/images/spritesheet1025.png)">
+		</div>
+		<p class="pokemon-label">{{ poke['name'] }}</p>
+
+	</div>
+	{% endfor %}
+</div>
+{% endblock %}

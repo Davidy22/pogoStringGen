@@ -128,3 +128,5 @@ feedback.txt
 
 data/process.py
 config.py
+*.sqlite
+pastes/

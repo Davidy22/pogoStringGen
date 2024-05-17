@@ -11,15 +11,18 @@
 {% endblock %}
 
 {% block content %}
+<div id="sid" class="hide">{{ sid }}</div>
 <script type="text/javascript" src="{{url_for('static', filename='js/scripts.js') }}"></script>
-<script type="text/javascript">
-	window.onload = loadProcess;
-</script>
-<!--
-<div id="topad">
-	<script data-cfasync='false' type='text/javascript' src='//p354211.clksite.com/adServe/banners?tid=354211_693092_4'></script>
+
+<div id="auth" class="menu">
+	<div id="login-box">
+		<div class="button" onclick="oauthSignIn()">Login</div>
+	</div>
+	<div id="user-box">
+		<img id="profile-pic-display" src="" width="20px">
+		<span id="username-display"></span>
+	</div>
 </div>
--->
 
 <div id="gen-nav">
 	<a href="#Gen1">
@@ -72,17 +75,18 @@
 
 <div id="controls">
 	<div class="control-row">
-		<textarea id="importBox"> </textarea>
+		<textarea id="importBox">{{ select }}</textarea>
 		<div class="button" onclick="importString()">Import</div>
 		<div class="button" onclick="addString()">Add</div>
 		<div class="button" onclick="subString()">Subtract</div>
 		<div class="button" onclick="invertString()">Invert</div>
 	</div>
+	
 	<div class="control-row">
-		
 		<textarea id="result" readonly> </textarea>
 		<div class="button" onclick="copy()">Copy string</div>
 	</div>
+
 	<button type="button" class="collapsible">More options</button>
 	<div class="collapsible-content">
 		<div class="control-row">
@@ -143,6 +147,13 @@
 			</div>
 		</div>
 	</div>
+
+	<div id="pasteTextDiv" class="control-row hide">
+		<div>Additional notes:</div>
+		<textarea id="pasteText">{{ text }}</textarea>
+		<div id="save-button" class="button" onclick="saveData()">Save all</div>
+	</div>
+	<div id="save-result"></div>
 </div>
 
 
