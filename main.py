@@ -1,10 +1,12 @@
 from flask import Flask, jsonify, render_template, request, redirect
 import json
-import urllib
 from src.parse import *
 from src.auth import *
 from src.db import *
+from config import *
+from requests_oauthlib import OAuth2Session
 
+validUsernameChars = set("!$'()*+,-.0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz")
 app = Flask(__name__)
 app.config.from_pyfile("config.py", silent=True)
 # app.secret_key = app.config["secret_key"]
@@ -41,14 +43,14 @@ def privacy():
 
 @app.route("/login", methods=["GET"])
 def login():
-    state = request.args.get("state")
-    access_token = request.args.get("access_token")
+    if request.args.get("error") is not None:
+        return render_template("index.html", pokemon=pokemonList)
     
-    user = urllib.request.urlopen(
-        url="https://www.googleapis.com/oauth2/v3/userinfo",
-        data=urllib.parse.urlencode({"access_token": access_token}).encode("ascii"),
-    ).read()
-    user = json.loads(user)
+    state = request.args.get("state")
+    
+    google = OAuth2Session(CLIENT_ID, redirect_uri=REDIRECT_URI)
+    google.fetch_token("https://www.googleapis.com/oauth2/v4/token", client_secret=CLIENT_SECRET, authorization_response=request.url.replace("http:","https:"))
+    user = google.get('https://www.googleapis.com/oauth2/v3/userinfo').json()
     uid = user["sub"]
 
     data = get_info(uid)
@@ -134,6 +136,10 @@ def create_account():
     text = request.form["text"]
     picture = request.form["picture"]
     textloc = gen_rand()
+    
+    if not set(username).issubset(validUsernameChars):
+        return jsonify(result=False, message="Username can only contain letters, numbers and the special characters !$'()*,-._")
+    
     with open(f"pastes/{textloc}.json", "w") as f:
         f.write(json.dumps({"select": text, "text": ""}))
 
@@ -141,7 +147,7 @@ def create_account():
         sid = add_session(uid)
         return jsonify(result=True, sid=sid)
     else:
-        return jsonify(result=False)
+        return jsonify(result=False, message="That username is already taken")
 
 
 @app.route("/u/<username>", methods=["GET"])

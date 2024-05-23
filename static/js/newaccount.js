@@ -9,7 +9,7 @@ function createAccount() {
             localStorage["sid"] = data.sid;
             window.location.href = "/";
         } else {
-            $("#status-message").html("That username is already taken");
+            $("#status-message").html(data.message);
         }
 	});
 };
