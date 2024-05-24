@@ -8,7 +8,7 @@ def db_create_user(uid, username, selected, text, image):
     cur = conn.cursor()
     try:
         res = cur.execute(
-            "insert into users(uid, username, selected, text, image) values(?, ?, ?, ?, ?)",
+            "insert into users(uid, username, selected, paste, image) values(?, ?, ?, ?, ?)",
             [uid, username, selected, text, image],
         )
         conn.commit()
