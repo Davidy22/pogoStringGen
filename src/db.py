@@ -1,7 +1,10 @@
 from src.rand import *
 import config
 import sqlite3
+import os
 
+if not os.path.isfile(config.DB_PATH):
+    os.popen(f"sqlite3 {config.DB_PATH} < db_schema.sql")
 
 def db_create_user(uid, username, selected, text, image):
     conn = sqlite3.connect(config.DB_PATH)
