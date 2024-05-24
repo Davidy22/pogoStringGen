@@ -3,7 +3,7 @@ import json
 from src.parse import *
 from src.auth import *
 from src.db import *
-from config import *
+import config
 from requests_oauthlib import OAuth2Session
 
 validUsernameChars = set("!$'()*+,-.0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz")
@@ -48,8 +48,8 @@ def login():
     
     state = request.args.get("state")
     
-    google = OAuth2Session(CLIENT_ID, redirect_uri=REDIRECT_URI)
-    google.fetch_token("https://www.googleapis.com/oauth2/v4/token", client_secret=CLIENT_SECRET, authorization_response=request.url.replace("http:","https:"))
+    google = OAuth2Session(config.CLIENT_ID, redirect_uri=config.REDIRECT_URI)
+    google.fetch_token("https://www.googleapis.com/oauth2/v4/token", client_secret=config.CLIENT_SECRET, authorization_response=request.url.replace("http:","https:"))
     user = google.get('https://www.googleapis.com/oauth2/v3/userinfo').json()
     uid = user["sub"]
 
@@ -69,16 +69,14 @@ def login():
             # Static page telling people they need to verify their email to make an account
             return render_template("verify_email.html")
     else:
-        file = open(f"pastes/{data['textloc']}.json", "r")
-        f = json.load(file)
         sid = add_session(uid)
 
         return render_template(
             "index.html",
             pokemon=pokemonList,
             username=data["username"],
-            text=f["text"],
-            select=f["select"],
+            text=data["paste"],
+            select=data["selected"],
             image=data["image"],
             sid=sid,
         )
@@ -99,11 +97,9 @@ def save():
     except:
         return jsonify(result="Could not get session information")
 
-    try:
-        with open(f"pastes/{data['textloc']}.json", "w") as f:
-            f.write(json.dumps({"text": text, "select": select}))
+    if change_info(uid, {"paste": text, "selected": select}):
         return jsonify(result="Saved!")
-    except:
+    else:
         return jsonify(result="Could not save info")
 
 
@@ -118,13 +114,11 @@ def check_login():
         return jsonify(result=False)
     else:
         data = get_info(uid)
-        file = open(f"pastes/{data['textloc']}.json", "r")
-        f = json.load(file)
         return jsonify(
             result=True,
             username=data["username"],
-            text=f["text"],
-            select=f["select"],
+            text=data["paste"],
+            select=data["selected"],
             image=data["image"],
         )
 
@@ -135,15 +129,12 @@ def create_account():
     username = request.form["username"]
     text = request.form["text"]
     picture = request.form["picture"]
-    textloc = gen_rand()
     
     if not set(username).issubset(validUsernameChars):
         return jsonify(result=False, message="Username can only contain letters, numbers and the special characters !$'()*,-._")
-    
-    with open(f"pastes/{textloc}.json", "w") as f:
-        f.write(json.dumps({"select": text, "text": ""}))
 
-    if db_create_user(uid, username, textloc, picture):
+
+    if db_create_user(uid, username, text, "", picture):
         sid = add_session(uid)
         return jsonify(result=True, sid=sid)
     else:
@@ -153,12 +144,11 @@ def create_account():
 @app.route("/u/<username>", methods=["GET"])
 def view(username):
     data = db_get_info_from_username(username)
-    file = open(f"pastes/{data['textloc']}.json")
-    f = json.load(file)
 
     return render_template(
         "view.html",
-        pokemon=[pokemon[str(i)] for i in parse(f["select"])],
+        pokemon=[pokemon[str(i)] for i in parse(data["selected"])],
+        selected = data["selected"],
         username=username,
-        text=f["text"],
+        text=data["paste"],
     )

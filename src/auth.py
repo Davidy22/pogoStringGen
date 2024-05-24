@@ -3,8 +3,8 @@ from src.db import *
 import sqlite3
 
 
-def create_user(uid, username, textloc, image):
-    return db_create_user(uid, username, textloc, image)
+def create_user(uid, username, selected, text, image):
+    return db_create_user(uid, username, selected, text, image)
 
 
 def change_info(uid, data):

@@ -1,14 +1,15 @@
 from src.rand import *
+import config
 import sqlite3
 
 
-def db_create_user(uid, username, textloc, image):
-    conn = sqlite3.connect("db.sqlite")
+def db_create_user(uid, username, selected, text, image):
+    conn = sqlite3.connect(config.DB_PATH)
     cur = conn.cursor()
     try:
         res = cur.execute(
-            "insert into users(uid, username, textloc, image) values(?, ?, ?, ?)",
-            [uid, username, textloc, image],
+            "insert into users(uid, username, selected, text, image) values(?, ?, ?, ?, ?)",
+            [uid, username, selected, text, image],
         )
         conn.commit()
         return True
@@ -21,7 +22,7 @@ def db_create_user(uid, username, textloc, image):
 
 
 def db_get_info(uid):
-    conn = sqlite3.connect("db.sqlite")
+    conn = sqlite3.connect(config.DB_PATH)
     cur = conn.cursor()
     res = cur.execute("""select * from users where uid = ?""", [uid]).fetchone()
     headers = [i[0] for i in cur.description][1:]
@@ -32,7 +33,7 @@ def db_get_info(uid):
 
 
 def db_get_info_from_username(username):
-    conn = sqlite3.connect("db.sqlite")
+    conn = sqlite3.connect(config.DB_PATH)
     cur = conn.cursor()
     res = cur.execute(
         """select * from users where username = ?""", [username]
@@ -45,24 +46,27 @@ def db_get_info_from_username(username):
 
 
 def db_change_info(uid, data):
-    conn = sqlite3.connect("db.sqlite")
+    conn = sqlite3.connect(config.DB_PATH)
     cur = conn.cursor()
-    fields = data.keys()
-    values = [data[i] for i in fields]
+    fields = [f"{i} = ?" for i in data.keys()]
+    values = [data[i] for i in data.keys()]
+    values.append(uid)
     try:
         res = cur.execute(
-            f"update users set {','.join(fields)} = ({','.join('?' for i in fields)}) where uid = ?",
+            f"update users set {','.join(fields)} where uid = ?",
             values,
         )
         conn.commit()
     except:
+        import traceback
+        traceback.print_exc()
         return False
 
     return True
 
 
 def db_add_session(uid):
-    conn = sqlite3.connect("db.sqlite")
+    conn = sqlite3.connect(config.DB_PATH)
     cur = conn.cursor()
     try:
         sid = gen_rand()
@@ -74,7 +78,7 @@ def db_add_session(uid):
 
 
 def db_get_sessions(uid):
-    conn = sqlite3.connect("db.sqlite")
+    conn = sqlite3.connect(config.DB_PATH)
     cur = conn.cursor()
     res = cur.execute("""select sid from sessions where uid = ?""", [uid]).fetchall()
     if res is None:
@@ -84,7 +88,7 @@ def db_get_sessions(uid):
 
 
 def db_get_uid_of_session(sid):
-    conn = sqlite3.connect("db.sqlite")
+    conn = sqlite3.connect(config.DB_PATH)
     cur = conn.cursor()
     res = cur.execute("""select uid from sessions where sid = ?""", [sid]).fetchone()
     if res is None:
