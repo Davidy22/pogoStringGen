@@ -24,12 +24,12 @@ DROP TABLE IF EXISTS `sessions`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `sessions` (
   `sesscount` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-  `sid` varchar(100) NOT NULL,
+  `sid` varchar(255) NOT NULL,
   `uid` varchar(30) NOT NULL,
   PRIMARY KEY (`sesscount`),
   KEY `sessions_users_FK` (`uid`),
   CONSTRAINT `sessions_users_FK` FOREIGN KEY (`uid`) REFERENCES `users` (`uid`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -59,4 +59,4 @@ CREATE TABLE `users` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-28  5:20:15
+-- Dump completed on 2024-05-28  6:12:37

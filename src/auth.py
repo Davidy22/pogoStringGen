@@ -1,6 +1,5 @@
 from src.rand import *
 from src.db import *
-import sqlite3
 
 
 def create_user(uid, username, selected, text, image):
