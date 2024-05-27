@@ -287,7 +287,7 @@ function oauthSignIn() {
 				'redirect_uri': "https://pogostring.com/login",
 				//'redirect_uri': "https://tolocalhost.com/login",
 				'response_type': 'code',
-				'scope': 'openid https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile',
+				'scope': 'openid',
 				'state': $("#result").val()};
 
 	// Add form parameters as hidden input values.
