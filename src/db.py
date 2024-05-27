@@ -29,6 +29,7 @@ def db_get_info(uid):
     conn, cur = db_connect()
     cur.execute("""select * from users where uid = %s""", [uid])
     res = cur.fetchone()
+    res = [i.decode() if type(i) == bytes else i for i in res]
     headers = [i[0] for i in cur.description][1:]
     if res is None or len(res) == 0:
         return None
@@ -40,6 +41,7 @@ def db_get_info_from_username(username):
     conn, cur = db_connect()
     cur.execute("""select * from users where username = %s""", [username])
     res = cur.fetchone()
+    res = [i.decode() if type(i) == bytes else i for i in res]
     headers = [i[0] for i in cur.description][1:]
     if res is None or len(res) == 0:
         return None
