@@ -78,7 +78,7 @@ def db_add_session(uid):
         cur.execute("select sesscount from sessions where uid = %s", [uid])
         res = cur.fetchall()
         if len(res) > 3:
-            cur.execute("delete from sessions where sesscount = %s", [min(res)])
+            cur.execute("delete from sessions where sesscount = %s", min(res))
         return sid
     except:
         import traceback
