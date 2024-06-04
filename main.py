@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, render_template, request, redirect
+from flask import Flask, jsonify, render_template, request, redirect, send_from_directory
 import json
 from src.parse import *
 from src.auth import *
@@ -16,6 +16,9 @@ file = open("data/dump.json")
 pokemon = json.load(file)
 pokemonList = list(pokemon.values())
 
+@app.route('/.well-known/<path:filename>')
+def serve_certbot(filename):
+    return send_from_directory('.well-known', filename)
 
 @app.route("/_generate_string", methods=["POST"])
 def generate_string():
