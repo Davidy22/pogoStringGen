@@ -2,3 +2,4 @@ flask
 black
 requests_oauthlib
 mysql-connector-python
+jsmin

@@ -1,6 +1,5 @@
 from flask import Flask, jsonify, render_template, request, redirect, send_from_directory
 import json
-from src.parse import *
 from src.auth import *
 from src.db import *
 import config
@@ -19,19 +18,6 @@ pokemonList = list(pokemon.values())
 @app.route('/.well-known/<path:filename>')
 def serve_certbot(filename):
     return send_from_directory('.well-known', filename)
-
-@app.route("/_generate_string", methods=["POST"])
-def generate_string():
-    pok = request.form.getlist("pok[]")
-    result = condense(pok)
-    return jsonify(result=result)
-
-
-@app.route("/_import_string", methods=["POST"])
-def import_string():
-    pok = request.form["pok"]
-    result = parse(pok)
-    return jsonify(result=result)  # TODO: Add error handling site side
 
 
 @app.route("/", methods=["GET"])
