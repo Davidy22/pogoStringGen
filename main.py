@@ -136,7 +136,7 @@ def view(username):
 
     return render_template(
         "view.html",
-        pokemon=[pokemon[str(i)] for i in parse(data["selected"])],
+        pokemon=[pokemon[str(i)] for i in data["selected"].split(",")],
         selected = data["selected"],
         username=username,
         text=data["paste"],
