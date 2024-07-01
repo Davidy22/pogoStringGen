@@ -133,10 +133,18 @@ def create_account():
 @app.route("/u/<username>", methods=["GET"])
 def view(username):
     data = db_get_info_from_username(username)
+    plist = []
+    for i in data["selected"].split(","):
+        if i.isnumeric():
+            plist.append(i)
+        else:
+            print(i)
+            s, e = i.split("-")
+            plist.extend(str(i) for i in range(int(s), int(e) + 1))
 
     return render_template(
         "view.html",
-        pokemon=[pokemon[str(i)] for i in data["selected"].split(",")],
+        pokemon=[pokemon[i] for i in plist],
         selected = data["selected"],
         username=username,
         text=data["paste"],
