@@ -891,7 +891,7 @@
     "890": {"name": "Eternatus", "no": 890, "family": 468, "stage": 1, "gen": 8, "keywords": ["not-in-game", "legendary"]},
     "891": {"name": "Kubfu", "no": 891, "family": 469, "stage": 1, "gen": 8, "keywords": ["not-in-game", "can-evolve", "legendary", "400-candy"]},
     "892": {"name": "Urshifu", "no": 892, "family": 469, "stage": 2, "gen": 8, "keywords": ["not-in-game", "legendary"]},
-    "893": {"name": "Zarude", "no": 893, "family": 470, "stage": 1, "gen": 8, "keywords": ["not-in-game", "mythical"]},
+    "893": {"name": "Zarude", "no": 893, "family": 470, "stage": 1, "gen": 8, "keywords": ["mythical"]},
     "894": {"name": "Regieleki", "no": 894, "family": 471, "stage": 1, "gen": 8, "keywords": ["legendary"]},
     "895": {"name": "Regidrago", "no": 895, "family": 472, "stage": 1, "gen": 8, "keywords": ["legendary"]},
     "896": {"name": "Glastrier", "no": 896, "family": 473, "stage": 1, "gen": 8, "keywords": ["legendary"]},
