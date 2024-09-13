@@ -897,7 +897,7 @@
     "896": {"name": "Glastrier", "no": 896, "family": 473, "stage": 1, "gen": 8, "keywords": ["legendary"]},
     "897": {"name": "Spectrier", "no": 897, "family": 474, "stage": 1, "gen": 8, "keywords": ["legendary"]},
     "898": {"name": "Calyrex", "no": 898, "family": 475, "stage": 1, "gen": 8, "keywords": ["legendary"]},
-    "899": {"name": "Wyrdeer", "no": 899, "family": 120, "stage": 2, "gen": 8, "keywords": ["not-in-game"]},
+    "899": {"name": "Wyrdeer", "no": 899, "family": 120, "stage": 2, "gen": 8, "keywords": []},
     "900": {"name": "Kleavor", "no": 900, "family": 58, "stage": 2, "gen": 8, "keywords": []},
     "901": {"name": "Ursaluna", "no": 901, "family": 110, "stage": 3, "gen": 8, "keywords": []},
     "902": {"name": "Basculegion", "no": 902, "family": 280, "stage": 2, "gen": 8, "keywords": []},
