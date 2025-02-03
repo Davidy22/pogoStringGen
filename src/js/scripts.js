@@ -295,6 +295,17 @@ function saveData() {
 	});
 };
 
+function themeToggle() {
+	document.body.classList.toggle('dark-mode');
+
+	if (document.body.classList.contains('dark-mode')) {
+		$("#theme-toggle").html('🌜');
+	} else {
+		$("#theme-toggle").html('🌞');
+	}
+};
+
+
 $( document ).ready(function(){
 	sortDex();
 

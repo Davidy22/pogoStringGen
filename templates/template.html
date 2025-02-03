@@ -21,7 +21,16 @@
 
 			gtag('config', 'UA-49267605-2');
 		</script>
-		
+		<div id="auth" class="menu">
+			<div id="login-box">
+				<div class="button" onclick="oauthSignIn()">Login</div>
+			</div>
+			<div id="user-box">
+				<img id="profile-pic-display" src="" width="20px">
+				<span id="username-display"></span>
+			</div>
+			<button id="theme-toggle" aria-label="Toggle Dark Mode" onclick="themeToggle()">🌞</button>
+		</div>
 		{% block header %}{% endblock %}
 	</head>
 	<body>

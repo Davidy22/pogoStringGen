@@ -262,3 +262,78 @@ a {
 	text-decoration: none;
 	outline: 0;
 }
+
+#theme-toggle {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+body.dark-mode #theme-toggle {
+  color: #ffffff;
+}
+
+body.dark-mode {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+body.dark-mode h1,
+body.dark-mode h3,
+body.dark-mode footer,
+body.dark-mode textarea,
+body.dark-mode .collapsible,
+body.dark-mode .collapsible-content,
+body.dark-mode .menu,
+body.dark-mode #pasteText,
+body.dark-mode #controls,
+body.dark-mode #result,
+body.dark-mode .control-row,
+body.dark-mode .textLabel,
+body.dark-mode .button,
+body.dark-mode .button-box,
+body.dark-mode .gen-header,
+body.dark-mode .pokemon,
+body.dark-mode .hide,
+body.dark-mode .image-frame,
+body.dark-mode .pokemon-image,
+body.dark-mode .pokemon-no,
+body.dark-mode .select,
+body.dark-mode .pokemon-label,
+body.dark-mode .not-in-go,
+body.dark-mode a {
+  color: #ffffff;
+  background-color: #121212;
+  border-color: #333333;
+}
+
+body.dark-mode footer {
+  background-color: #333333;
+}
+
+body.dark-mode .collapsible,
+body.dark-mode .collapsible-content {
+  background-color: #333333;
+}
+
+body.dark-mode .textLabel {
+  background-color: #444444;
+}
+
+body.dark-mode .button {
+  background-color: #555555;
+}
+
+body.dark-mode .gen-header,
+body.dark-mode .pokemon {
+  background-color: #222222;
+}
+
+body.dark-mode .gen-nav-button {
+  background-color: #444444;
+}
+
+body.dark-mode {
+  background-color: #121212;
+}
