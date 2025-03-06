@@ -872,7 +872,7 @@
     "871": {"name": "Pincurchin", "no": 871, "family": 453, "stage": 1, "gen": 8, "keywords": ["not-in-game"]},
     "872": {"name": "Snom", "no": 872, "family": 454, "stage": 1, "gen": 8, "keywords": ["not-in-game", "can-evolve", "50-candy"]},
     "873": {"name": "Frosmoth", "no": 873, "family": 454, "stage": 2, "gen": 8, "keywords": ["not-in-game"]},
-    "874": {"name": "Stonjourner", "no": 874, "family": 455, "stage": 1, "gen": 8, "keywords": ["not-in-game"]},
+    "874": {"name": "Stonjourner", "no": 874, "family": 455, "stage": 1, "gen": 8, "keywords": []},
     "875": {"name": "Eiscue", "no": 875, "family": 456, "stage": 1, "gen": 8, "keywords": ["not-in-game"]},
     "876": {"name": "Indeedee", "no": 876, "family": 457, "stage": 1, "gen": 8, "keywords": ["not-in-game"]},
     "877": {"name": "Morpeko", "no": 877, "family": 458, "stage": 1, "gen": 8, "keywords": []},
