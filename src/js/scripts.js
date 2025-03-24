@@ -1,5 +1,5 @@
 function importString() {
-	var toSelect = parse($("#importBox").val());
+	var toSelect = parse($("#importBox").val().trim());
 	$(".pokemon").removeClass("select")
 
 

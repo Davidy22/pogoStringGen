@@ -1,4 +1,4 @@
-function importString(){var toSelect=parse($("#importBox").val());$(".pokemon").removeClass("select")
+function importString(){var toSelect=parse($("#importBox").val().trim());$(".pokemon").removeClass("select")
 for(i=0;i<toSelect.length;i++){$("#"+toSelect[i]).addClass("select")}
 getResult();};function addString(){var toSelect=parse($("#importBox").val());for(i=0;i<toSelect.length;i++){$("#"+toSelect[i]).addClass("select")}
 getResult();};function subString(){var toSelect=parse($("#importBox").val());for(i=0;i<toSelect.length;i++){$("#"+toSelect[i]).removeClass("select")}
