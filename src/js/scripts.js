@@ -53,7 +53,69 @@ function getResult() {
 		return n.id;
 	});
 
-	$("#result").val(condense(arrayOfIds));
+	// Assumes global `allPokemonData` is populated (e.g., from dump.json)
+	// Example: var allPokemonData = { "1": { "name": "Bulbasaur", "no": 1, ..., "pokemon_tags": ["grass-type"] } };
+	let baseResult = condense(arrayOfIds);
+	let appendages = "";
+
+	const allPokemonElements = $(".pokemon");
+	const selectedPokemonElements = $(".pokemon.select");
+
+	const allElementsByDex = {};
+	allPokemonElements.each(function() {
+		const dex = $(this).data('dex').toString();
+		if (!allElementsByDex[dex]) {
+			allElementsByDex[dex] = [];
+		}
+		allElementsByDex[dex].push($(this));
+	});
+
+	const selectedElementsByDex = {};
+	selectedPokemonElements.each(function() {
+		const dex = $(this).data('dex').toString();
+		const id = $(this).attr('id'); // id is a string, e.g., "25"
+		if (!selectedElementsByDex[dex]) {
+			selectedElementsByDex[dex] = [];
+		}
+		selectedElementsByDex[dex].push({ id: id, element: $(this) });
+	});
+
+	for (const dexKey in selectedElementsByDex) {
+		const groupDex = dexKey; // This is the Pokedex number as a string
+		const selectedInGroup = selectedElementsByDex[groupDex];
+		const totalInGroupWithDex = allElementsByDex[groupDex] ? allElementsByDex[groupDex].length : 0;
+
+		if (selectedInGroup.length < totalInGroupWithDex) {
+			let unselectedIdsInGroup = [];
+			if (allElementsByDex[groupDex]) {
+				allElementsByDex[groupDex].forEach(function(pokemonElement) {
+					if (!pokemonElement.hasClass('select')) {
+						unselectedIdsInGroup.push(pokemonElement.attr('id'));
+					}
+				});
+			}
+
+			let tagsOfUnselectedInGroup = new Set();
+			unselectedIdsInGroup.forEach(function(unselectedId) {
+				if (allPokemonData && allPokemonData[unselectedId] && allPokemonData[unselectedId].pokemon_tags) {
+					allPokemonData[unselectedId].pokemon_tags.forEach(tag => tagsOfUnselectedInGroup.add(tag));
+				}
+			});
+
+			selectedInGroup.forEach(function(p_sel) {
+				const selectedPokemonId = p_sel.id; // This is the string ID, e.g., "25"
+				if (allPokemonData && allPokemonData[selectedPokemonId] && allPokemonData[selectedPokemonId].pokemon_tags) {
+					for (const tag of allPokemonData[selectedPokemonId].pokemon_tags) {
+						if (!tagsOfUnselectedInGroup.has(tag)) {
+							appendages += "&!" + groupDex + "," + tag;
+							break; // Found a unique tag for this selected Pokemon
+						}
+					}
+				}
+			});
+		}
+	}
+	$("#result").val(baseResult + appendages);
 };
 
 function hideHeaders() {

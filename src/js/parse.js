@@ -22,14 +22,21 @@ class Lexer {
         this.pos++;
         if (match === '-' || match === '!' || match === ',' || match === '&') {
             return new Token(match, match);
-        } else if (/\d/.test(match)) {
-            while (this.pos < this.input.length && /\d/.test(this.input[this.pos])) {
+        } else if (/[a-zA-Z0-9]/.test(match)) {
+            // Read the longest possible sequence of alphanumeric characters and hyphens
+            while (this.pos < this.input.length && /[a-zA-Z0-9-]/.test(this.input[this.pos])) {
                 match += this.input[this.pos];
                 this.pos++;
             }
-            return new Token('NUMBER', parseInt(match));
+            // If this sequence is purely numeric, create a NUMBER token
+            if (/^\d+$/.test(match)) {
+                return new Token('NUMBER', parseInt(match));
+            } else {
+                // Otherwise, create a KEYWORD_STRING token
+                return new Token('KEYWORD_STRING', match);
+            }
         } else {
-            throw new Error(`Unexpected character: ${match}`);
+            throw new Error(`Unexpected character: ${this.input[this.pos-1]}`);
         }
     }
 }
@@ -88,7 +95,20 @@ class Parser {
     }
 
     value() {
-        if (this.currentToken.type === 'NUMBER') {
+        // Assumes global `allPokemonData` object is available.
+        // Example: var allPokemonData = { "1": { "name": "Bulbasaur", ..., "pokemon_tags": ["grass-type"] } };
+        if (this.currentToken.type === 'KEYWORD_STRING') {
+            const tag = this.currentToken.value;
+            this.eat('KEYWORD_STRING');
+            const matchingPokemonIds = [];
+            for (const pokemonId in allPokemonData) {
+                const pokemon = allPokemonData[pokemonId];
+                if (pokemon && pokemon.pokemon_tags && Array.isArray(pokemon.pokemon_tags) && pokemon.pokemon_tags.includes(tag)) {
+                    matchingPokemonIds.push(parseInt(pokemonId));
+                }
+            }
+            return matchingPokemonIds;
+        } else if (this.currentToken.type === 'NUMBER') {
             let start = this.currentToken.value;
             this.eat('NUMBER');
             if (this.currentToken.type === '-') {
@@ -108,6 +128,11 @@ class Parser {
         }
     }
 }
+
+// It's assumed that `allPokemonData` will be populated by another script.
+// For example, by fetching dump.json and assigning it to a global variable:
+// let allPokemonData = {};
+// fetch('data/dump.json').then(response => response.json()).then(data => allPokemonData = data);
 
 function parse(input) {
     let lexer = new Lexer(input);
