@@ -30,6 +30,11 @@ def privacy():
     return render_template("policy.html")
 
 
+@app.route("/helpful-links", methods=["GET"])
+def privacy():
+    return render_template("helpful-links.html")
+
+
 @app.route("/login", methods=["GET"])
 def login():
     if request.args.get("error") is not None:
