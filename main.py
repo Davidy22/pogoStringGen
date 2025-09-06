@@ -31,7 +31,7 @@ def privacy():
 
 
 @app.route("/helpful-links", methods=["GET"])
-def privacy():
+def helpful():
     return render_template("helpful-links.html")
 
 
