@@ -971,7 +971,7 @@
     "970": {"name": "Glimmora", "no": 970, "family": 507, "stage": 2, "gen": 9, "keywords": []},
     "971": {"name": "Greavard", "no": 971, "family": 508, "stage": 1, "gen": 9, "keywords": ["50-candy", "can-evolve"]},
     "972": {"name": "Houndstone", "no": 972, "family": 508, "stage": 2, "gen": 9, "keywords": []},
-    "973": {"name": "Flamigo", "no": 973, "family": 509, "stage": 1, "gen": 9, "keywords": ["not-in-game"]},
+    "973": {"name": "Flamigo", "no": 973, "family": 509, "stage": 1, "gen": 9, "keywords": []},
     "974": {"name": "Cetoddle", "no": 974, "family": 510, "stage": 1, "gen": 9, "keywords": ["50-candy", "can-evolve"]},
     "975": {"name": "Cetitan", "no": 975, "family": 510, "stage": 2, "gen": 9, "keywords": ["shiny"]},
     "976": {"name": "Veluza", "no": 976, "family": 511, "stage": 1, "gen": 9, "keywords": ["not-in-game"]},
