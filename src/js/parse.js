@@ -15,19 +15,35 @@ class Lexer {
         while (this.pos < this.input.length && this.input[this.pos] === ' ') {
             this.pos++;
         }
+
         if (this.pos >= this.input.length) {
             return new Token('EOF', null);
         }
+
         let match = this.input[this.pos];
         this.pos++;
+
+        // Operators
         if (match === '-' || match === '!' || match === ',' || match === '&') {
             return new Token(match, match);
-        } else if (/\d/.test(match)) {
+        }
+
+        // Numbers
+        else if (/\d/.test(match)) {
             while (this.pos < this.input.length && /\d/.test(this.input[this.pos])) {
                 match += this.input[this.pos];
                 this.pos++;
             }
             return new Token('NUMBER', parseInt(match));
+        }
+
+        // Tags
+        else if (/[a-zA-Z]/.test(match)) {
+            while (this.pos < this.input.length && /[a-zA-Z0-9_-]/.test(this.input[this.pos])) {
+                match += this.input[this.pos];
+                this.pos++;
+            }
+            return new Token('TAG', match.toLowerCase());
         } else {
             throw new Error(`Unexpected character: ${match}`);
         }
@@ -35,9 +51,11 @@ class Lexer {
 }
 
 class Parser {
-    constructor(lexer) {
+    constructor(lexer, tagMap, ids) {
         this.lexer = lexer;
         this.currentToken = this.lexer.nextToken();
+        this.tagMap = tagMap;
+        this.ids = ids;
     }
 
     eat(tokenType) {
@@ -76,9 +94,9 @@ class Parser {
             this.eat('!');
             let factor = this.baseExpression();
             let result = [];
-            for (let i = 0; i <= 5000; i++) {
-                if (!factor.includes(i)) {
-                    result.push(i);
+            for (let id of this.ids) {
+                if (!factor.includes(id)) {
+                    result.push(id);
                 }
             }
             return result;
@@ -96,13 +114,29 @@ class Parser {
                 if (this.currentToken.type === 'NUMBER') {
                     let end = this.currentToken.value;
                     this.eat('NUMBER');
-                    return Array.from({length: end - start + 1}, (_, i) => start + i);
+                    return this.ids.filter(id => {
+                        const numPart = parseInt(id);
+                        return numPart >= start && numPart <= end;
+                    });
                 } else {
-                    return Array.from({length: 5000 - start + 1}, (_, i) => start + i);
+                    const maxDex = Math.max(...this.ids.map(id => parseInt(id)));
+                    return this.ids.filter(id => {
+                        const numPart = parseInt(id);
+                        return numPart >= start && numPart <= maxDex;
+                    });
                 }
             } else {
-                return [start];
+                //check
+                return this.ids.filter(id => parseInt(id) === start);
             }
+        } else if (this.currentToken.type === 'TAG') {
+            const tagName = this.currentToken.value;
+            this.eat('TAG');
+            var numbers = this.tagMap[tagName];
+            if (!numbers) {
+                numbers = []
+            }
+            return numbers.slice();
         } else {
             throw new Error(`Unexpected token: ${this.currentToken.type}`);
         }
@@ -111,7 +145,7 @@ class Parser {
 
 function parse(input) {
     let lexer = new Lexer(input);
-    let parser = new Parser(lexer);
+    let parser = new Parser(lexer, tagMap, ids);
     return parser.parse();
 }
 

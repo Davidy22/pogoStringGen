@@ -201,7 +201,7 @@ textarea {
 .pokemon-label {
     text-align: center;
     position: absolute;
-    font-size: 17px;
+    font-size: clamp(7px, 0.85cqw, 17px);
     top: 101px;
     width: 96%;
 }
