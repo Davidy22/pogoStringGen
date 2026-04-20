@@ -1,13 +1,15 @@
+const tagMap = {};
+var ids = []
+
 function importString() {
-	var toSelect = parse($("#importBox").val().trim());
-	$(".pokemon").removeClass("select")
+    var toSelect = parse($("#importBox").val().trim(), tagMap);
+    $(".pokemon").removeClass("select");
 
-
-	for (i=0; i < toSelect.length; i++) {
-		$( "#" + toSelect[i] ).addClass("select")
-	}
-	getResult();
-};
+    for (i=0; i < toSelect.length; i++) {
+        $( "#" + toSelect[i] ).addClass("select");
+    }
+    getResult();
+}
 
 
 function addString() {
@@ -49,12 +51,92 @@ function select(elem) {
 };
 
 function getResult() {
-	var arrayOfIds = $.map($(".select"), function(n, i){
-		return n.id;
-	});
-
-	$("#result").val(condense(arrayOfIds));
-};
+    const selected = $(".select");
+    console.log('Selected elements:', selected.length);
+    
+    // Group by dex
+    const byDex = {};
+    selected.each(function() {
+        const id = this.id;
+        const dex = $(this).data('dex');
+        console.log(`Selected: id=${id}, dex=${dex}`);
+        
+        if (!byDex[dex]) {
+            byDex[dex] = {
+                selectedIds: [],
+                selectedForms: []
+            };
+        }
+        byDex[dex].selectedIds.push(id);
+        byDex[dex].selectedForms.push({
+            id: id,
+            tags: ($(this).attr('data-tags') || '').split(/\s+/).filter(t => t)
+        });
+    });
+    
+    // Find all forms for relevant dex numbers
+    $('.pokemon').each(function() {
+        const dex = $(this).data('dex');
+        if (byDex[dex]) {
+            if (!byDex[dex].allForms) {
+                byDex[dex].allForms = [];
+            }
+            byDex[dex].allForms.push({
+                id: this.id,
+                tags: ($(this).attr('data-tags') || '').split(/\s+/).filter(t => t)
+            });
+        }
+    });
+    
+    console.log('Grouped by dex:', byDex);
+    
+    // Build result
+    const baseNumbers = [];
+    const formFilters = [];
+    
+    for (const dex in byDex) {
+        const group = byDex[dex];
+        const allFormIds = new Set(group.allForms.map(f => f.id));
+        const selectedIds = new Set(group.selectedIds);
+        
+        const allSelected = allFormIds.size === selectedIds.size && 
+                            [...allFormIds].every(id => selectedIds.has(id));
+        
+        console.log(`Dex ${dex}: allForms=${allFormIds.size}, selected=${selectedIds.size}, allSelected=${allSelected}`);
+        
+        baseNumbers.push(parseInt(dex));
+        
+        if (!allSelected) {
+            const unselectedForms = group.allForms.filter(f => !selectedIds.has(f.id));
+            const filterTags = [];
+            
+            for (const selectedForm of group.selectedForms) {
+                const uniqueTag = selectedForm.tags.find(tag => 
+                    !unselectedForms.some(f => f.tags.includes(tag))
+                );
+                
+                if (uniqueTag) {
+                    filterTags.push(uniqueTag);
+                } else {
+                    const suffix = selectedForm.id.replace(/^\d+/, '');
+                    if (suffix) filterTags.push(suffix);
+                }
+            }
+            
+            if (filterTags.length > 0) {
+                formFilters.push(`&!${dex},${filterTags.join(',')}`);
+            }
+        }
+    }
+    
+    let result = condense(baseNumbers);
+    if (formFilters.length > 0) {
+        result += formFilters.join('');
+    }
+    
+    console.log('Final result:', result);
+    $("#result").val(result || "");
+}
 
 function hideHeaders() {
 	$(".gen-header").hide();
@@ -347,4 +429,22 @@ $( document ).ready(function(){
 			$("#pasteTextDiv").show();
         }
 	});
+	
+    $('.pokemon').each(function() {
+        const id = this.id;
+        const tags = $(this).attr('data-tags');
+        if (tags) {
+            tags.split(/\s+/).forEach(tag => {
+                if (tag) {
+                    if (!tagMap[tag]) tagMap[tag] = new Set();
+                    tagMap[tag].add(id);  // Use ID, not dex number
+                }
+            });
+        }
+    });
+    // Convert Sets to arrays
+    for (let tag in tagMap) {
+        tagMap[tag] = Array.from(tagMap[tag]);
+    }
+	ids = $('.pokemon').map(function() {return this.id;}).get()
 });

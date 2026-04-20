@@ -13,7 +13,6 @@ app.config.from_pyfile("config.py", silent=True)
 
 file = open("data/dump.json")
 pokemon = json.load(file)
-pokemonList = list(pokemon.values())
 
 @app.route('/.well-known/<path:filename>')
 def serve_certbot(filename):
@@ -22,7 +21,7 @@ def serve_certbot(filename):
 
 @app.route("/", methods=["GET"])
 def index():
-    return render_template("index.html", pokemon=pokemonList)
+    return render_template("index.html", pokemon=pokemon)
 
 
 @app.route("/privacy", methods=["GET"])
@@ -38,7 +37,7 @@ def helpful():
 @app.route("/login", methods=["GET"])
 def login():
     if request.args.get("error") is not None:
-        return render_template("index.html", pokemon=pokemonList)
+        return render_template("index.html", pokemon=pokemon)
     
     state = request.args.get("state")
     
@@ -67,7 +66,7 @@ def login():
 
         return render_template(
             "index.html",
-            pokemon=pokemonList,
+            pokemon=pokemon,
             username=data["username"],
             text=data["paste"],
             select=data["selected"],
