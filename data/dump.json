@@ -849,7 +849,7 @@
   "775": {"name":"Komala","no":775,"family":401,"stage":1,"gen":7,"keywords":["shiny"],"tags":["normal","alola"]},
   "776": {"name":"Turtonator","no":776,"family":402,"stage":1,"gen":7,"keywords":["shiny"],"tags":["fire","dragon","alola"]},
   "777": {"name":"Togedemaru","no":777,"family":403,"stage":1,"gen":7,"keywords":["shiny"],"tags":["steel","electric","alola"]},
-  "778": {"name":"Mimikyu","no":778,"family":404,"stage":1,"gen":7,"keywords":["not-in-game"],"tags":["fairy","ghost","alola"]},
+  "778": {"name":"Mimikyu","no":778,"family":404,"stage":1,"gen":7,"keywords":[],"tags":["fairy","ghost","alola"]},
   "779": {"name":"Bruxish","no":779,"family":405,"stage":1,"gen":7,"keywords":["shiny"],"tags":["psychic","water","alola"]},
   "780": {"name":"Drampa","no":780,"family":406,"stage":1,"gen":7,"keywords":["shiny"],"tags":["normal","dragon","alola"]},
   "781": {"name":"Dhelmise","no":781,"family":407,"stage":1,"gen":7,"keywords":[],"tags":["grass","ghost","alola"]},
